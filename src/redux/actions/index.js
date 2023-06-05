@@ -1,8 +1,8 @@
 // ACTIONS TYPES
-export const ADD_EMAIL = 'ADD_EMAIL';
+export const SAVE_EMAIL = 'SAVE_EMAIL';
 
 // ACTIONS CREATORS
-export const addEmail = (payload) => ({
-  type: ADD_EMAIL,
+export const saveEmail = (payload) => ({
+  type: SAVE_EMAIL,
   payload,
 });

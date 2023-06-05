@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './pages/Login';
+import Routes from './routes';
 
 function App() {
   return (
     <div className="meals">
-      <Login />
+      <Routes />
     </div>
   );
 }

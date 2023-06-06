@@ -3,6 +3,7 @@ import validator from 'validator';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { saveEmail } from '../redux/actions';
+import './Login.css';
 
 function Login() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -38,19 +39,34 @@ function Login() {
 
   return (
 
-    <div>
-      <form action="submit">
-        <label htmlFor="email">E-mail</label>
+    <div className="page">
+      <form
+        action="submit"
+        className="form"
+      >
+        <label
+          htmlFor="email"
+          className="label"
+        >
+          E-mail
+        </label>
         <input
           type="email"
           name="email"
           id="email"
           data-testid="email-input"
+          className="input"
           onChange={ (e) => dispatch(saveEmail(e.target.value)) }
           value={ email }
         />
-        <label htmlFor="password">Senha</label>
+        <label
+          htmlFor="password"
+          className="label"
+        >
+          Senha
+        </label>
         <input
+          className="input"
           type="password"
           name="password"
           id="password"
@@ -59,6 +75,7 @@ function Login() {
           value={ password }
         />
         <button
+          className="btn"
           type="button"
           data-testid="login-submit-btn"
           disabled={ isButtonDisabled }

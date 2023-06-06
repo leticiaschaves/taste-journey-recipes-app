@@ -1,7 +1,8 @@
 import React from 'react';
+import { useParams } from 'react-router-dom/';
 
 export default function RecipeDetails() {
-  return (
-    <div>RecipeDetails</div>
-  );
+  const { idDaReceita } = useParams();
+  console.log(idDaReceita);
+  return <h1>{idDaReceita}</h1>;
 }

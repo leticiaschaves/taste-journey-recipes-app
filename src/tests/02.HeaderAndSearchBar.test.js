@@ -8,7 +8,7 @@ import fetch from '../../cypress/mocks/fetch';
 const searchInput = 'search-input';
 const searchButton = 'exec-search-btn';
 const mealsAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken';
-// const drinksAPI = 'https://www.themealdb.com/api/json/v1/1/search.php?f=c';
+const drinksAPI = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=c';
 const alertMessage = 'Your search must have only 1 (one) character';
 
 describe('Testa os componentes Header e SearchBar da aplicação', () => {
@@ -17,7 +17,7 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
     global.fetch.mockImplementation(fetch);
 
     jest.spyOn(global, 'alert');
-    global.alert.mockImplementation(() => {});
+    global.alert.mockImplementation(() => { });
     const { history } = renderWithRouterAndRedux(<App />);
     const btn = screen.getByTestId('login-submit-btn');
     const email = screen.getByRole('textbox', { name: /e-mail/i });
@@ -109,45 +109,45 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
 });
 
 // EM CONSTRUÇÃO
-// describe('Testa o Header e SearchBar da página drinks', () => {
-//   it('Deve realizar busca na searchBar e chamar a API', async () => {
-//     const { history } = renderWithRouterAndRedux(<App />);
-//     const btn = screen.getByTestId('login-submit-btn');
-//     const email = screen.getByRole('textbox', { name: /e-mail/i });
-//     const password = screen.getByTestId('password-input');
+describe('Testa o Header e SearchBar da página drinks', () => {
+  it('Deve realizar busca na searchBar e chamar a API', async () => {
+    const { history } = renderWithRouterAndRedux(<App />, { route: '/drinks' });
+    // const btn = screen.getByTestId('login-submit-btn');
+    // const email = screen.getByRole('textbox', { name: /e-mail/i });
+    // const password = screen.getByTestId('password-input');
 
-//     userEvent.type(email, 'user@user.com');
+    // userEvent.type(email, 'user@user.com');
 
-//     userEvent.type(password, 'strongPassword.com');
+    // userEvent.type(password, 'strongPassword.com');
 
-//     await waitFor(() => {
-//       userEvent.click(btn);
-//       const { pathname } = history.location;
-//       expect(pathname).toBe('/drinks');
-//     });
-//     const search = screen.getByTestId('search-top-btn');
-//     const profile = screen.getByAltText(/profile-icon/i);
+    // await waitFor(() => {
+    //   userEvent.click(btn);
+    //   const { pathname } = history.location;
+    //   expect(pathname).toBe('/drinks');
+    // });
+    const search = screen.getByTestId('search-top-btn');
+    const profile = screen.getByAltText(/profile-icon/i);
 
-//     expect(search).toBeVisible();
-//     expect(profile).toBeInTheDocument();
+    expect(search).toBeVisible();
+    expect(profile).toBeInTheDocument();
 
-//     waitFor(() => {
-//       userEvent.click(search);
+    waitFor(() => {
+      userEvent.click(search);
 
-//       expect(history.location.pathname).toBe('/drinks');
-//     });
-//     const input = screen.getByTestId(searchInput);
-//     const searchBtn = screen.getByTestId(searchButton);
-//     expect(input).toBeInTheDocument();
-//     expect(searchBtn).toBeInTheDocument();
-//     userEvent.type(input, 'c');
-//     userEvent.click(firstLetter);
-//     userEvent.click(searchBtn);
+      expect(history.location.pathname).toBe('/drinks');
+    });
+    const input = screen.getByTestId(searchInput);
+    const searchBtn = screen.getByTestId(searchButton);
+    expect(input).toBeInTheDocument();
+    expect(searchBtn).toBeInTheDocument();
+    userEvent.type(input, 'c');
+    userEvent.click(firstLetter);
+    userEvent.click(searchBtn);
 
-//     expect(global.fetch).toBeCalledWith(drinksAPI);
+    expect(global.fetch).toBeCalledWith(drinksAPI);
 
-//     waitFor(() => {
-//       expect(screen.getAllByText(/Casino/i)).toBeInTheDocument();
-//     });
-//   });
-// });
+    waitFor(() => {
+      expect(screen.getAllByText(/Casino/i)).toBeInTheDocument();
+    });
+  });
+});

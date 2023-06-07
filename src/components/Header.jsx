@@ -23,11 +23,11 @@ export default function Header({ title }) {
 
   return (
     <header>
-      <div id="top-header">
+      <div className="top-header">
         <Link to="/profile">
           <img src={ profileIcon } alt="profile-icon" data-testid="profile-top-btn" />
         </Link>
-        <h2 data-testid="page-title" id="page-title">{ title }</h2>
+        <h2 data-testid="page-title" className="page-title">{ title }</h2>
         { (title === 'Drinks' || title === 'Meals')
         && (
           <button type="button" onClick={ () => setSearch(!search) }>

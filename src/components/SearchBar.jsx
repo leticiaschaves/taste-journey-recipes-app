@@ -61,8 +61,9 @@ export default function SearchBar() {
         onChange={ handleChange }
         value={ search }
       />
-      <div id="rabio-opts">
+      <div className="rabio-opts">
         <input
+          className="radio-input"
           type="radio"
           data-testid="ingredient-search-radio"
           name="searchRadio"
@@ -74,6 +75,7 @@ export default function SearchBar() {
         <label htmlFor="ingredients" className="label-opt">Ingredients</label>
 
         <input
+          className="radio-input"
           type="radio"
           data-testid="name-search-radio"
           name="searchRadio"
@@ -85,6 +87,7 @@ export default function SearchBar() {
         <label htmlFor="name" className="label-opt">Name</label>
 
         <input
+          className="radio-input"
           type="radio"
           name="searchRadio"
           id="firstLetter"
@@ -99,7 +102,7 @@ export default function SearchBar() {
         type="button"
         data-testid="exec-search-btn"
         onClick={ handleClick }
-        id="search-btn"
+        className="search-btn"
       >
         Search
       </button>

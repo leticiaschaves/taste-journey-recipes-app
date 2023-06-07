@@ -48,23 +48,4 @@ describe('Testa a página de login', () => {
       expect(pathname).toBe('/meals');
     }, { timeout: 5000 });
   });
-  // it('testa se no click de botão de configurações a rota será "settings"', () => {
-  //   const { history } = renderWithRouterAndRedux(<App />);
-  //   const configBtn = screen.getByTestId('btn-settings');
-  //   userEvent.click(configBtn);
-  //   const { pathname } = history.location;
-  //   expect(pathname).toBe('/settings');
-  // });
 });
-// test('Test login page', () => {
-//   it('Should test if all components renders', () => {
-// renderWithRouterAndRedux(<App />)
-// const email = screen.getByTestId('email-input');
-// const password = screen.getByTestId('password-input');
-// const loginBtn = screen.getByTestId('login-submit-btn');
-
-// expect(email).toBeInTheDocument();
-// expect(password).toBeInTheDocument();
-// expect(loginBtn).toBeInTheDocument();
-//   });
-// });

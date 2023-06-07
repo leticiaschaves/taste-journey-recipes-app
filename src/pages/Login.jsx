@@ -35,6 +35,7 @@ function Login() {
 
   useEffect(() => {
     validationFields();
+    // eslint-disable-next-line
   }, [email, password]);
 
   return (

@@ -1,8 +1,9 @@
-import { GET_RECIPES } from '../actions';
+import { GET_CATEGORIES, GET_RECIPES } from '../actions';
 
 const INITIAL_STATE = {
   recipes: [],
   searched: false,
+  categories: [],
 };
 
 const recipes = (state = INITIAL_STATE, action) => {
@@ -13,6 +14,11 @@ const recipes = (state = INITIAL_STATE, action) => {
       ...state,
       recipes: payload,
       searched: true,
+    };
+  case GET_CATEGORIES:
+    return {
+      ...state,
+      categories: payload,
     };
   default:
     return state;

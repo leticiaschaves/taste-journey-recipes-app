@@ -6,7 +6,8 @@ import Meals from '../components/Meals';
 import Drinks from '../components/Drinks';
 import Footer from '../components/Footer';
 import '../components/footer.css';
-import { fetchRecipes } from '../redux/actions';
+import { fetchCategories, fetchRecipes } from '../redux/actions';
+import Categories from '../components/Categories';
 
 export default function Recipes() {
   const dispatch = useDispatch();
@@ -15,10 +16,16 @@ export default function Recipes() {
   useEffect(() => {
     const urlDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     const urlMeals = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+    const urlDrinksCategories = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+    const urlMealsCategories = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+
     dispatch(fetchRecipes(pathname === '/drinks' ? urlDrinks : urlMeals));
+    dispatch(fetchCategories(
+      pathname === '/drinks' ? urlDrinksCategories : urlMealsCategories,
+    ));
   }, []);
 
-  const { recipes, searched } = useSelector((state) => state.recipes);
+  const { recipes, searched, categories } = useSelector((state) => state.recipes);
 
   let component = null;
 
@@ -32,6 +39,7 @@ export default function Recipes() {
   return (
     <div>
       <Header title={ pathname === '/drinks' ? 'Drinks' : 'Meals' } />
+      <Categories categories={ categories } />
       {component}
       <Footer />
     </div>

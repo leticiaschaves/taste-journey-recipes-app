@@ -15,7 +15,7 @@ export default function Meals({ data }) {
     return <Redirect to={ `/meals/${meals[0].idMeal}` } />;
   }
   return (
-    <div>
+    <div id="meals">
       {meals.length > 0
         && meals.map((meal, index) => {
           const limit = 12;

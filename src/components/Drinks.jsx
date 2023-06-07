@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Redirect } from 'react-router-dom/';
+import { Redirect, Link } from 'react-router-dom/';
 import RecipeCard from './RecipeCard';
 
 export default function Drinks({ data }) {
@@ -22,7 +22,9 @@ export default function Drinks({ data }) {
           const limit = 12;
           if (index < limit) {
             return (
-              <RecipeCard key={ drink.idDrink } data={ drink } index={ index } />
+              <Link to={ `/drinks/${drink.idDrink}` } key={ drink.idDrink }>
+                <RecipeCard data={ drink } index={ index } />
+              </Link>
             );
           }
           return null;

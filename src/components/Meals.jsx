@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 export default function Meals({ data }) {
@@ -22,7 +22,11 @@ export default function Meals({ data }) {
         && meals.map((meal, index) => {
           const limit = 12;
           if (index < limit) {
-            return <RecipeCard key={ meal.idMeal } data={ meal } index={ index } />;
+            return (
+              <Link to={ `/meals/${meal.idMeal}` } key={ meal.idMeal }>
+                <RecipeCard data={ meal } index={ index } />
+              </Link>
+            );
           }
           return null;
         })}

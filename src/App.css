@@ -11,3 +11,134 @@ h1, h2, h3, h4 {
   color: #a44a3f;
   font-weight: 800;
 }
+
+/* HEADER */
+header {
+  align-items: center;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+
+}
+
+.page-title {
+  margin-top: -20px;
+}
+
+.top-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+input {
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.search-btn {
+  background-color: #a44a3f;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  height: 40px;
+  margin: 0 10px;
+  padding: 10px;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.rabio-opts {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.label-opt {
+  margin-left: -10px;
+}
+
+
+.radio-input {
+  appearance: none;
+  outline: none;
+}
+
+
+.radio-input:before {
+  background-color: transparent;
+  border: 1px solid #0000003f;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 16px;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+  vertical-align: middle;
+  width: 16px;
+}
+
+.radio-input:checked:before {
+  background-color: #a44a3f;
+}
+
+/* RECIPE CARD */
+.recipe-card {
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 20px;
+  width: 350px;
+}
+
+.recipe-img {
+  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-name {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: -15px;
+  text-align: center;
+}
+
+.meals {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0;
+}

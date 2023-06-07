@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom/';
 import RecipeCard from './RecipeCard';
 
 export default function Meals({ data }) {
+  const { filteredByCategory } = useSelector((state) => state.recipes);
   const { meals } = data;
 
   if (!meals) {
@@ -11,7 +13,7 @@ export default function Meals({ data }) {
     return null;
   }
 
-  if (meals.length === 1) {
+  if (meals.length === 1 && filteredByCategory) {
     return <Redirect to={ `/meals/${meals[0].idMeal}` } />;
   }
   return (

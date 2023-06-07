@@ -61,44 +61,48 @@ export default function SearchBar() {
         onChange={ handleChange }
         value={ search }
       />
+      <div className="rabio-opts">
+        <input
+          className="radio-input"
+          type="radio"
+          data-testid="ingredient-search-radio"
+          name="searchRadio"
+          id="ingredients"
+          value="ingredients"
+          onChange={ handleChange }
+          checked={ searchRadio === 'ingredients' }
+        />
+        <label htmlFor="ingredients" className="label-opt">Ingredients</label>
 
-      <input
-        type="radio"
-        data-testid="ingredient-search-radio"
-        name="searchRadio"
-        id="ingredients"
-        value="ingredients"
-        onChange={ handleChange }
-        checked={ searchRadio === 'ingredients' }
-      />
-      <label htmlFor="ingredients">Ingredients</label>
+        <input
+          className="radio-input"
+          type="radio"
+          data-testid="name-search-radio"
+          name="searchRadio"
+          id="name"
+          value="name"
+          onChange={ handleChange }
+          checked={ searchRadio === 'name' }
+        />
+        <label htmlFor="name" className="label-opt">Name</label>
 
-      <input
-        type="radio"
-        data-testid="name-search-radio"
-        name="searchRadio"
-        id="name"
-        value="name"
-        onChange={ handleChange }
-        checked={ searchRadio === 'name' }
-      />
-      <label htmlFor="name">Name</label>
-
-      <input
-        type="radio"
-        name="searchRadio"
-        id="firstLetter"
-        data-testid="first-letter-search-radio"
-        value="firstLetter"
-        onChange={ handleChange }
-        checked={ searchRadio === 'firstLetter' }
-      />
-      <label htmlFor="firstLetter">First Letter</label>
-
+        <input
+          className="radio-input"
+          type="radio"
+          name="searchRadio"
+          id="firstLetter"
+          data-testid="first-letter-search-radio"
+          value="firstLetter"
+          onChange={ handleChange }
+          checked={ searchRadio === 'firstLetter' }
+        />
+        <label htmlFor="firstLetter" className="label-opt">First Letter</label>
+      </div>
       <button
         type="button"
         data-testid="exec-search-btn"
         onClick={ handleClick }
+        className="search-btn"
       >
         Search
       </button>

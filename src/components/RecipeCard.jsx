@@ -3,10 +3,16 @@ import React from 'react';
 
 export default function RecipeCard({ data, index }) {
   return (
-    <div data-testid={ `${index}-recipe-card` }>
-      <p data-testid={ `${index}-card-name` }>{data.strMeal || data.strDrink}</p>
+    <div data-testid={ `${index}-recipe-card` } className="recipe-card">
+      <p
+        data-testid={ `${index}-card-name` }
+        className="card-name"
+      >
+        {data.strMeal || data.strDrink}
+
+      </p>
       <img
-        width="200px"
+        className="recipe-img"
         data-testid={ `${index}-card-img` }
         src={ data.strMealThumb || data.strDrinkThumb }
         alt={ data.strMeal || data.strDrink }

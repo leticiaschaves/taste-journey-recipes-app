@@ -1,27 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation } from 'react-router-dom/';
-import { useDispatch } from 'react-redux';
-import { fetchRecipes, redirectToDetails } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRecipesByCategory } from '../redux/actions';
 
 export default function Categories({ categories }) {
+  const { filteredByCategory } = useSelector((state) => state.recipes);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-
-  const handleClick = (categoryType) => {
-    const urlDrinks = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categoryType}`;
-    const urlMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryType}`;
-
-    dispatch(redirectToDetails(false));
-    dispatch(fetchRecipes(pathname === '/drinks' ? urlDrinks : urlMeals));
-  };
 
   const handleClear = () => {
     const urlDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     const urlMeals = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
-    dispatch(redirectToDetails(true));
-    dispatch(fetchRecipes(pathname === '/drinks' ? urlDrinks : urlMeals));
+    dispatch(fetchRecipesByCategory(pathname === '/drinks'
+      ? urlDrinks : urlMeals, true));
+  };
+
+  const handleClick = (categoryType) => {
+    const urlDrinks = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categoryType}`;
+    const urlMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryType}`;
+
+    if (filteredByCategory) {
+      dispatch(fetchRecipesByCategory(pathname === '/drinks'
+        ? urlDrinks : urlMeals, false));
+    } else {
+      handleClear();
+    }
   };
 
   return (

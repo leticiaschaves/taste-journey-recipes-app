@@ -47,3 +47,14 @@ export const fetchCategories = (url) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const fetchRecipesByCategory = (url, bool) => async (dispatch) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    dispatch(getRecipes(data));
+    dispatch(redirectToDetails(bool));
+  } catch (error) {
+    console.log(error);
+  }
+};

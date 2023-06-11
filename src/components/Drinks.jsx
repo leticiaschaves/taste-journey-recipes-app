@@ -1,17 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom/';
+import { useSelector, useDispatch } from 'react-redux';
 import RecipeCard from './RecipeCard';
+import { fetchRecipes } from '../redux/actions';
 
 export default function Drinks({ data }) {
-  const { drinks } = data;
+  const dispatch = useDispatch();
+  const { filteredByCategory, searched } = useSelector(
+    (state) => state.recipes,
+  );
+  const values = Object.values(data);
+  const verification = values.every((value) => value !== null);
+  let drinks = [];
 
-  if (!drinks) {
+  if (searched && !verification) {
     global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    const urlDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+    dispatch(fetchRecipes(urlDrinks));
+
     return null;
   }
 
-  if (drinks.length === 1) {
+  if (data.drinks) {
+    drinks = data.drinks;
+  }
+
+  if (drinks.length === 1 && filteredByCategory) {
     return <Redirect to={ `/drinks/${drinks[0].idDrink}` } />;
   }
 

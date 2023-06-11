@@ -3,6 +3,7 @@ export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const REDIRECT_TO_DETAILS = 'REDIRECT_TO_DETAILS';
+export const GET_RECIPE_DETAILS = 'GET_RECIPE_DETAILS';
 
 // ACTIONS CREATORS
 export const saveEmail = (payload) => ({
@@ -22,6 +23,11 @@ export const getCategories = (payload) => ({
 
 export const redirectToDetails = (payload) => ({
   type: REDIRECT_TO_DETAILS,
+  payload,
+});
+
+export const getRecipeDetails = (payload) => ({
+  type: GET_RECIPE_DETAILS,
   payload,
 });
 
@@ -54,6 +60,17 @@ export const fetchRecipesByCategory = (url, bool) => async (dispatch) => {
     const data = await response.json();
     dispatch(getRecipes(data));
     dispatch(redirectToDetails(bool));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchRecipeDetails = (url) => async (dispatch) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const detailType = data.meals || data.drinks;
+    dispatch(getRecipeDetails(detailType[0]));
   } catch (error) {
     console.log(error);
   }

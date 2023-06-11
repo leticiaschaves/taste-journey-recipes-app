@@ -3,7 +3,7 @@ export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const REDIRECT_TO_DETAILS = 'REDIRECT_TO_DETAILS';
-export const GET_RECIPE_DETAILS = 'GET_RECIPE_DETAILS';
+export const GET_DETAILS_AND_RECOMMENDATIONS = 'GET_DETAILS_AND_RECOMMENDATIONS';
 
 // ACTIONS CREATORS
 export const saveEmail = (payload) => ({
@@ -26,9 +26,15 @@ export const redirectToDetails = (payload) => ({
   payload,
 });
 
-export const getRecipeDetails = (payload) => ({
-  type: GET_RECIPE_DETAILS,
+export const getDetailsAndRecommendations = (payload) => ({
+  type: GET_DETAILS_AND_RECOMMENDATIONS,
   payload,
+});
+
+export const getRecommendations = (payload) => ({
+  type: GET_RECOMMENDATIONS,
+  payload,
+
 });
 
 export const fetchRecipes = (url) => async (dispatch) => {
@@ -65,12 +71,25 @@ export const fetchRecipesByCategory = (url, bool) => async (dispatch) => {
   }
 };
 
-export const fetchRecipeDetails = (url) => async (dispatch) => {
+export const fetchDetailsAndRecommendations = (url) => async (dispatch) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
     const detailType = data.meals || data.drinks;
-    dispatch(getRecipeDetails(detailType[0]));
+    let recommendationsUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+    if (url.includes('meal')) {
+      recommendationsUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+    }
+    const recommendationsResponse = await fetch(recommendationsUrl);
+    const recommendationsData = await recommendationsResponse.json();
+    const recommendations = recommendationsData.meals || recommendationsData.drinks;
+    const Limit = 6;
+    const dataSliced = recommendations.slice(0, Limit);
+    const payload = {
+      details: detailType[0],
+      recommendations: dataSliced,
+    };
+    dispatch(getDetailsAndRecommendations(payload));
   } catch (error) {
     console.log(error);
   }

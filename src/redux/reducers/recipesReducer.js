@@ -1,7 +1,7 @@
 import {
   GET_CATEGORIES,
   GET_RECIPES,
-  GET_RECIPE_DETAILS,
+  GET_DETAILS_AND_RECOMMENDATIONS,
   REDIRECT_TO_DETAILS,
 } from '../actions';
 
@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   categories: [],
   filteredByCategory: true,
   details: {},
+  recommendations: [],
 };
 
 const recipes = (state = INITIAL_STATE, action) => {
@@ -32,11 +33,11 @@ const recipes = (state = INITIAL_STATE, action) => {
       ...state,
       filteredByCategory: payload,
     };
-  case GET_RECIPE_DETAILS:
+  case GET_DETAILS_AND_RECOMMENDATIONS:
     return {
       ...state,
-      details: payload,
-
+      details: payload.details,
+      recommendations: payload.recommendations,
     };
   default:
     return state;

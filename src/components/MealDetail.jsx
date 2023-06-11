@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRecipeDetails } from '../redux/actions';
+import { fetchDetailsAndRecommendations } from '../redux/actions';
+import RecommendationCard from './RecommendationCard';
 
 export default function MealDetail({ id }) {
   const dispatch = useDispatch();
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
   useEffect(() => {
-    dispatch(fetchRecipeDetails(url));
+    dispatch(fetchDetailsAndRecommendations(url));
   }, []);
-  const { details } = useSelector((state) => state.recipes);
+  const { details, recommendations } = useSelector((state) => state.recipes);
   let ingredientsKeys = [];
   let measuresKeys = [];
 
@@ -50,6 +51,11 @@ export default function MealDetail({ id }) {
         title={ details.strMeal }
         data-testid="video"
       />
+      <div className="recommendation">
+        {recommendations.map((item, index) => (
+          <RecommendationCard key={ index } data={ item } index={ index } />
+        ))}
+      </div>
     </div>
   );
 }

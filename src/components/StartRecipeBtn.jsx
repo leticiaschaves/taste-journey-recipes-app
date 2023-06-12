@@ -5,11 +5,15 @@ import { useLocation, useHistory } from 'react-router-dom/';
 export default function StartRecipeBtn({ id }) {
   const { pathname } = useLocation();
   const history = useHistory();
-  const doneRecipes = localStorage.getItem('doneRecipes') || [];
-  const inProgressLS = localStorage.getItem('inProgressRecipes') || {
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+  const inProgressLS = JSON.parse(
+    localStorage.getItem('inProgressRecipes'),
+  ) || {
     drinks: {},
     meals: {},
   };
+
+  const inProgressKey = inProgressLS.drinks || inProgressLS.meals;
 
   let doneVerification = false;
   let inProgressVerification = false;
@@ -18,15 +22,9 @@ export default function StartRecipeBtn({ id }) {
     doneVerification = doneRecipes.some((item) => item.id === id);
   }
 
-  if (pathname.includes('drinks')) {
-    inProgressVerification = Object.keys(inProgressLS.drinks).some(
-      (item) => item === id,
-    );
-  } else {
-    inProgressVerification = Object.keys(inProgressLS.meals).some(
-      (item) => item === id,
-    );
-  }
+  inProgressVerification = Object.keys(inProgressKey).some(
+    (item) => item === id,
+  );
 
   const handleClick = () => {
     history.push(

@@ -147,7 +147,6 @@ form {
 .recommendation {
   display: flex;
   flex-direction: column;
-  background-color: red;
   height: 300px;
   justify-content: center;
   align-items: center;
@@ -166,4 +165,14 @@ form {
   margin: 20px 0;
   padding: 20px;
   width: 300px;
+}
+
+.startRecipe {
+  position: fixed;
+  bottom: 0;
+  padding: 10px 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: lightgreen;
+
 }

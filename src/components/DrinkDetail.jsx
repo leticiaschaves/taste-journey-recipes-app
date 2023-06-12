@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
 import RecommendationCard from './RecommendationCard';
+import StartRecipeBtn from './StartRecipeBtn';
 
 export default function DrinkDetail({ id }) {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ export default function DrinkDetail({ id }) {
           <RecommendationCard key={ index } data={ item } index={ index } />
         ))}
       </div>
+      <StartRecipeBtn />
     </div>
   );
 }

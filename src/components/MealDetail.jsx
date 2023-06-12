@@ -58,7 +58,7 @@ export default function MealDetail({ id }) {
       </div>
       <StartRecipeBtn id={ id } />
       <ShareBtn />
-      <FavoriteBtn />
+      <FavoriteBtn data={ details } />
     </div>
   );
 }

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
 import RecommendationCard from './RecommendationCard';
 import StartRecipeBtn from './StartRecipeBtn';
+import ShareBtn from './ShareBtn';
+import FavoriteBtn from './FavoriteBtn';
 
 export default function MealDetail({ id }) {
   const dispatch = useDispatch();
@@ -55,6 +57,8 @@ export default function MealDetail({ id }) {
         ))}
       </div>
       <StartRecipeBtn id={ id } />
+      <ShareBtn />
+      <FavoriteBtn />
     </div>
   );
 }

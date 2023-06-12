@@ -16,12 +16,8 @@ export default function MealDetail({ id }) {
   let measuresKeys = [];
 
   if (details) {
-    ingredientsKeys = Object
-      .keys(details)
-      .filter((key) => key.includes('Ingredient'));
-    measuresKeys = Object
-      .keys(details)
-      .filter((key) => key.includes('Measure'));
+    ingredientsKeys = Object.keys(details).filter((key) => key.includes('Ingredient'));
+    measuresKeys = Object.keys(details).filter((key) => key.includes('Measure'));
   }
 
   return (
@@ -34,7 +30,8 @@ export default function MealDetail({ id }) {
       <h1 data-testid="recipe-title">{details.strMeal}</h1>
       <h3 data-testid="recipe-category">{details.strCategory}</h3>
       <ul>
-        {(ingredientsKeys.length > 0 && measuresKeys.length > 0)
+        {ingredientsKeys.length > 0
+          && measuresKeys.length > 0
           && ingredientsKeys.map((key, index) => (details[key] !== '' ? (
             <li
               key={ key }
@@ -57,7 +54,7 @@ export default function MealDetail({ id }) {
           <RecommendationCard key={ index } data={ item } index={ index } />
         ))}
       </div>
-      <StartRecipeBtn />
+      <StartRecipeBtn id={ id } />
     </div>
   );
 }

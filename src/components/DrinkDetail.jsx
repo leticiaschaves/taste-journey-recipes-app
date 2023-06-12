@@ -16,12 +16,8 @@ export default function DrinkDetail({ id }) {
   let measuresKeys = [];
 
   if (details) {
-    ingredientsKeys = Object
-      .keys(details)
-      .filter((key) => key.includes('Ingredient'));
-    measuresKeys = Object
-      .keys(details)
-      .filter((key) => key.includes('Measure'));
+    ingredientsKeys = Object.keys(details).filter((key) => key.includes('Ingredient'));
+    measuresKeys = Object.keys(details).filter((key) => key.includes('Measure'));
   }
 
   return (
@@ -34,15 +30,18 @@ export default function DrinkDetail({ id }) {
       <h1 data-testid="recipe-title">{details.strDrink}</h1>
       <h3 data-testid="recipe-category">{details.strAlcoholic}</h3>
       <ul>
-        {(ingredientsKeys.length > 0 && measuresKeys.length > 0)
+        {ingredientsKeys.length > 0
+          && measuresKeys.length > 0
           && ingredientsKeys.map((key, index) => (details[key] !== null ? (
             <li
               key={ key }
               data-testid={ `${index}-ingredient-name-and-measure` }
             >
-              {`${details[key]} ${details[measuresKeys[index]] !== null
-                ? `- ${details[measuresKeys[index]]}`
-                : ''}`}
+              {`${details[key]} ${
+                details[measuresKeys[index]] !== null
+                  ? `- ${details[measuresKeys[index]]}`
+                  : ''
+              }`}
             </li>
           ) : null))}
       </ul>
@@ -52,7 +51,7 @@ export default function DrinkDetail({ id }) {
           <RecommendationCard key={ index } data={ item } index={ index } />
         ))}
       </div>
-      <StartRecipeBtn />
+      <StartRecipeBtn id={ id } />
     </div>
   );
 }

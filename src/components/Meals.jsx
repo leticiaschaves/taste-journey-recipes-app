@@ -13,8 +13,6 @@ export default function Meals({ data }) {
   const values = Object.values(data);
   const verification = values.every((value) => value !== null);
   let meals = [];
-  console.log(data);
-  console.log(verification);
 
   if (searched && !verification) {
     global.alert('Sorry, we haven\'t found any recipes for these filters.');

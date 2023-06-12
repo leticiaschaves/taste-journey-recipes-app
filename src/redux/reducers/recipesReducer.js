@@ -1,10 +1,17 @@
-import { GET_CATEGORIES, GET_RECIPES, REDIRECT_TO_DETAILS } from '../actions';
+import {
+  GET_CATEGORIES,
+  GET_RECIPES,
+  GET_DETAILS_AND_RECOMMENDATIONS,
+  REDIRECT_TO_DETAILS,
+} from '../actions';
 
 const INITIAL_STATE = {
   recipes: [],
   searched: false,
   categories: [],
   filteredByCategory: true,
+  details: {},
+  recommendations: [],
 };
 
 const recipes = (state = INITIAL_STATE, action) => {
@@ -25,6 +32,12 @@ const recipes = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       filteredByCategory: payload,
+    };
+  case GET_DETAILS_AND_RECOMMENDATIONS:
+    return {
+      ...state,
+      details: payload.details,
+      recommendations: payload.recommendations,
     };
   default:
     return state;

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 function IngredientsCheckbox({ details }) {
+  const [checkedIngredient, setCheckedIngredient] = useState([]);
   let ingredientsKeys = [];
   let measuresKeys = [];
 
@@ -9,6 +10,17 @@ function IngredientsCheckbox({ details }) {
     ingredientsKeys = Object.keys(details).filter((key) => key.includes('Ingredient'));
     measuresKeys = Object.keys(details).filter((key) => key.includes('Measure'));
   }
+
+  const handleChecked = ({ target: { value, checked } }) => {
+    if (checked) {
+      setCheckedIngredient([
+        ...checkedIngredient,
+        value,
+      ]);
+    } else {
+      setCheckedIngredient(checkedIngredient.filter((item) => item !== value));
+    }
+  };
 
   return (
     <div>
@@ -23,14 +35,17 @@ function IngredientsCheckbox({ details }) {
                 <label
                   key={ key }
                   data-testid={ `${index}-ingredient-step` }
+                  className={ checkedIngredient.includes(details[key])
+                    ? 'checkedIngredient' : '' }
                 >
                   <input
                     type="checkbox"
                     name={ details[key] }
                     id={ details[key] }
                     value={ details[key] }
+                    onChange={ handleChecked }
                   />
-                  {`${details[measuresKeys[index]]} ${details[key]}`}
+                  <p>{`${details[measuresKeys[index]]} ${details[key]}`}</p>
                 </label>
               )))}
       </ul>

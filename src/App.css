@@ -175,3 +175,7 @@ form {
   transform: translateX(-50%);
 
 }
+
+.checkedIngredient {
+  text-decoration: line-through solid black;
+}

@@ -34,13 +34,19 @@ export default function FavoriteBtn({ data }) {
   };
 
   return (
-    <button type="button" onClick={ handleClick }>
-      <img
-        src={ favorite ? blackHeart : whiteHeart }
-        alt="Heart"
-        data-testid="favorite-btn"
-      />
-    </button>
+    <div className="sharingBtn">
+      <button
+        className="favorite-btn"
+        type="button"
+        onClick={ handleClick }
+      >
+        <img
+          src={ favorite ? blackHeart : whiteHeart }
+          alt="Heart"
+          data-testid="favorite-btn"
+        />
+      </button>
+    </div>
   );
 }
 

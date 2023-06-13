@@ -10,6 +10,6 @@ footer {
 }
 
 .footer-section {
-  bottom: 65px;
+  bottom: 0;
   position: absolute;
 }

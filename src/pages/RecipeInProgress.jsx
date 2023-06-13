@@ -23,7 +23,7 @@ function RecipeInProgress() {
     dispatch(fetchDetailsAndRecommendations(url));
   }, []);
   const { details } = useSelector((state) => state.recipes);
-  console.log(details);
+  // console.log(details);
 
   return (
     <div>
@@ -36,7 +36,10 @@ function RecipeInProgress() {
       <h1 data-testid="recipe-title">{details.strMeal || details.strDrink}</h1>
       <h2 data-testid="recipe-category">{details.strCategory}</h2>
       <h3 data-testid="instructions">{details.strInstructions}</h3>
-      <IngredientsCheckbox details={ details } />
+      <IngredientsCheckbox
+        id={ idDaReceita }
+        details={ details }
+      />
       <FinishBtn />
       <FavoriteBtn data={ details } />
       <ShareBtn />

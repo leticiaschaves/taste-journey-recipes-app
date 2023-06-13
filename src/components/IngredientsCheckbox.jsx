@@ -1,14 +1,40 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-function IngredientsCheckbox({ details }) {
-  const [checkedIngredient, setCheckedIngredient] = useState([]);
+function IngredientsCheckbox({ details, id }) {
+  const { pathname } = useLocation();
+  const ingredients = JSON.parse(localStorage.getItem('inProgressRecipes')) || {
+    drinks: {
+      [id]: [],
+    },
+    meals: {
+      [id]: [],
+    },
+  };
+
+  let key = 'meals';
+  if (pathname.includes('drinks')) {
+    // console.log('teste');
+    key = 'drinks';
+  }
+
+  const INITIAL_STATE = ingredients[key][id] || [];
+  console.log(ingredients[key]);
+
+  const [checkedIngredient, setCheckedIngredient] = useState(INITIAL_STATE);
+  // useEffect(() => {
+  //   setCheckedIngredient(INITIAL_STATE);
+  // }, [INITIAL_STATE]);
+
   let ingredientsKeys = [];
   let measuresKeys = [];
 
   if (details) {
-    ingredientsKeys = Object.keys(details).filter((key) => key.includes('Ingredient'));
-    measuresKeys = Object.keys(details).filter((key) => key.includes('Measure'));
+    ingredientsKeys = Object.keys(details)
+      .filter((detailsKey) => detailsKey.includes('Ingredient'));
+    measuresKeys = Object.keys(details)
+      .filter((detailsKey) => detailsKey.includes('Measure'));
   }
 
   const handleChecked = ({ target: { value, checked } }) => {
@@ -22,30 +48,47 @@ function IngredientsCheckbox({ details }) {
     }
   };
 
+  useEffect(() => {
+    if (ingredients) {
+      localStorage.setItem(
+        'inProgressRecipes',
+        JSON.stringify({
+          ...ingredients,
+          [key]: {
+            ...ingredients[key],
+            [id]: checkedIngredient,
+          },
+        }),
+      );
+    }
+    console.log(ingredients);
+  }, [checkedIngredient]);
+
   return (
     <div>
       <ul>
         {ingredientsKeys.length > 0
           && measuresKeys.length > 0
-          && ingredientsKeys.map((key, index) => (
-            (details[key] !== null && details[key] !== '')
+          && ingredientsKeys.map((ingredient, index) => (
+            (details[ingredient] !== null && details[ingredient] !== '')
             && (details[measuresKeys[index]] !== null
               && details[measuresKeys[index]] !== '')
               && (
                 <label
-                  key={ key }
+                  key={ ingredient }
                   data-testid={ `${index}-ingredient-step` }
-                  className={ checkedIngredient.includes(details[key])
+                  className={ checkedIngredient.includes(details[ingredient])
                     ? 'checkedIngredient' : '' }
                 >
                   <input
                     type="checkbox"
-                    name={ details[key] }
-                    id={ details[key] }
-                    value={ details[key] }
+                    name={ details[ingredient] }
+                    id={ details[ingredient] }
+                    value={ details[ingredient] }
                     onChange={ handleChecked }
+                    checked={ checkedIngredient.includes(details[ingredient]) }
                   />
-                  <p>{`${details[measuresKeys[index]]} ${details[key]}`}</p>
+                  <p>{`${details[measuresKeys[index]]} ${details[ingredient]}`}</p>
                 </label>
               )))}
       </ul>

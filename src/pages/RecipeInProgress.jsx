@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import FavoriteBtn from '../components/FavoriteBtn';
 import FinishBtn from '../components/FinishBtn';
 import ShareBtn from '../components/ShareBtn';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
+import IngredientsCheckbox from '../components/IngredientsCheckbox';
 
-function RecipeInProgress({ id }) {
+function RecipeInProgress() {
+  const { idDaReceita } = useParams();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idDaReceita}`;
 
   if (pathname.includes('/drinks')) {
-    url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+    url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDaReceita}`;
   }
 
   useEffect(() => {
@@ -22,13 +24,6 @@ function RecipeInProgress({ id }) {
   }, []);
   const { details } = useSelector((state) => state.recipes);
   console.log(details);
-  // let ingredientsKeys = [];
-  // let measuresKeys = [];
-
-  // if (details) {
-  //   ingredientsKeys = Object.keys(details).filter((key) => key.includes('Ingredient'));
-  //   measuresKeys = Object.keys(details).filter((key) => key.includes('Measure'));
-  // }
 
   return (
     <div>
@@ -41,6 +36,7 @@ function RecipeInProgress({ id }) {
       <h1 data-testid="recipe-title">{details.strMeal || details.strDrink}</h1>
       <h2 data-testid="recipe-category">{details.strCategory}</h2>
       <h3 data-testid="instructions">{details.strInstructions}</h3>
+      <IngredientsCheckbox details={ details } />
       <FinishBtn />
       <FavoriteBtn data={ details } />
       <ShareBtn />

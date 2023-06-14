@@ -80,3 +80,5 @@ describe('Categories', () => {
     );
   });
 });
+
+// ... e por aí vai.

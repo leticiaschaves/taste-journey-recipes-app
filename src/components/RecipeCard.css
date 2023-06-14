@@ -17,6 +17,7 @@
 .recipe-card p {
   color: #003049;
   font-size: medium;
+  text-decoration: none;
 }
 
 .recipe-img {
@@ -33,7 +34,9 @@
   margin-top: -15px;
   text-align: center;
   text-decoration: none;
+  
 }
+
 
 
 .meals {

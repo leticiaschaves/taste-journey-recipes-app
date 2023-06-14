@@ -5,8 +5,6 @@ import { act } from 'react-dom/test-utils';
 import App from '../App';
 import fetch from '../../cypress/mocks/fetch';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
-// import mealCategories from '../../cypress/mocks/mealCategories';
-// import user from '../redux/reducers/userReducer';
 
 describe('Testa o componente Recipes da aplicação', () => {
   beforeEach(async () => {
@@ -44,15 +42,5 @@ describe('Testa o componente Recipes da aplicação', () => {
     const allCategory = screen.getByRole('button', { name: /all/i });
     userEvent.click(allCategory);
     await screen.findByText('GG');
-  });
-
-  it('testa se o botão Start Recipe está funcionando corretamente', async () => {
-    renderWithRouterAndRedux(<App />);
-    const { history, debug } = renderWithRouterAndRedux(<App />);
-    act(() => {
-      history.push('/drinks');
-    });
-    await screen.findByText('GG');
-    debug();
   });
 });

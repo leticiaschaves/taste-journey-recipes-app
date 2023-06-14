@@ -20,7 +20,7 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
     global.alert.mockImplementation(() => { });
     const { history } = renderWithRouterAndRedux(<App />);
     const btn = screen.getByTestId('login-submit-btn');
-    const email = screen.getByRole('textbox', { name: /e-mail/i });
+    const email = screen.getByTestId('email-input');
     const password = screen.getByTestId('password-input');
 
     userEvent.type(email, 'user@user.com');

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function IngredientsCheckbox({ details, id }) {
+function IngredientsCheckbox({ details, id, setDisabled }) {
   const { pathname } = useLocation();
   const ingredients = JSON.parse(localStorage.getItem('inProgressRecipes')) || {
     drinks: {
@@ -15,20 +15,16 @@ function IngredientsCheckbox({ details, id }) {
 
   let key = 'meals';
   if (pathname.includes('drinks')) {
-    // console.log('teste');
     key = 'drinks';
   }
 
   const INITIAL_STATE = ingredients[key][id] || [];
-  console.log(ingredients[key]);
 
   const [checkedIngredient, setCheckedIngredient] = useState(INITIAL_STATE);
-  // useEffect(() => {
-  //   setCheckedIngredient(INITIAL_STATE);
-  // }, [INITIAL_STATE]);
 
   let ingredientsKeys = [];
   let measuresKeys = [];
+  let ingredientsList = [];
 
   if (details) {
     ingredientsKeys = Object.keys(details)
@@ -39,13 +35,49 @@ function IngredientsCheckbox({ details, id }) {
 
   const handleChecked = ({ target: { value, checked } }) => {
     if (checked) {
-      setCheckedIngredient([
-        ...checkedIngredient,
-        value,
-      ]);
+      setCheckedIngredient([...checkedIngredient, value]);
     } else {
       setCheckedIngredient(checkedIngredient.filter((item) => item !== value));
     }
+  };
+
+  if (ingredientsKeys.length > 0 && measuresKeys.length > 0) {
+    ingredientsList = ingredientsKeys.map(
+      (ingredient, index) => details[ingredient] !== null
+        && details[ingredient] !== ''
+        && details[measuresKeys[index]] !== null
+        && details[measuresKeys[index]] !== ''
+        && (
+          <label
+            key={ ingredient }
+            data-testid={ `${index}-ingredient-step` }
+            className={
+              checkedIngredient.includes(details[ingredient])
+                ? 'checkedIngredient'
+                : ''
+            }
+          >
+            <input
+              type="checkbox"
+              name={ details[ingredient] }
+              id={ details[ingredient] }
+              value={ details[ingredient] }
+              onChange={ handleChecked }
+              checked={ checkedIngredient.includes(details[ingredient]) }
+            />
+            <p>{`${details[measuresKeys[index]]} ${details[ingredient]}`}</p>
+          </label>
+        ),
+    );
+  }
+
+  const checkAllCheckboxes = () => {
+    const length = ingredientsList.reduce(
+      (acc, item) => (item !== false ? acc + 1 : acc),
+      0,
+    );
+    const check = length === checkedIngredient.length;
+    setDisabled(!check);
   };
 
   useEffect(() => {
@@ -61,37 +93,12 @@ function IngredientsCheckbox({ details, id }) {
         }),
       );
     }
-    console.log(ingredients);
+    checkAllCheckboxes();
   }, [checkedIngredient]);
 
   return (
     <div>
-      <ul>
-        {ingredientsKeys.length > 0
-          && measuresKeys.length > 0
-          && ingredientsKeys.map((ingredient, index) => (
-            (details[ingredient] !== null && details[ingredient] !== '')
-            && (details[measuresKeys[index]] !== null
-              && details[measuresKeys[index]] !== '')
-              && (
-                <label
-                  key={ ingredient }
-                  data-testid={ `${index}-ingredient-step` }
-                  className={ checkedIngredient.includes(details[ingredient])
-                    ? 'checkedIngredient' : '' }
-                >
-                  <input
-                    type="checkbox"
-                    name={ details[ingredient] }
-                    id={ details[ingredient] }
-                    value={ details[ingredient] }
-                    onChange={ handleChecked }
-                    checked={ checkedIngredient.includes(details[ingredient]) }
-                  />
-                  <p>{`${details[measuresKeys[index]]} ${details[ingredient]}`}</p>
-                </label>
-              )))}
-      </ul>
+      <ul>{ingredientsList.length > 0 && ingredientsList}</ul>
     </div>
   );
 }

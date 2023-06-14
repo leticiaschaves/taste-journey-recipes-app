@@ -1,21 +1,21 @@
 .categories {
   align-items: center;
-  background-color: #f77f00;
+  background: linear-gradient(to bottom right, #ea3c21, #f2b211);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   gap: 0.5rem;
   height: 3rem;
+  justify-content: space-around;
   margin-bottom: -20px;
-  justify-content: center;
   padding: 1rem;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
 }
 
 .category-button {
-  font-size: 11px;
-  padding: 0.3rem 0.5rem;
-  background-color: rgba(255, 255, 255, 0.555);
+  background-color: #ae2b09;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: white;
   font-size: 13px;
+  font-weight: 800;
+  padding: 0.3rem 0.5rem;
 }

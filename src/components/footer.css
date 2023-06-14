@@ -1,11 +1,10 @@
 footer {
   align-items: center;
-  background: linear-gradient(to bottom right, #ea3c21, #f2b211);
+  background-color: rgba(255, 255, 255, 0.432);
   bottom: 0;
   display: flex;
-  height: 65px;
+  height: 7%;
   justify-content: space-around;
-  padding: 1rem 0;
   position: fixed;
   width: 100%;
 }

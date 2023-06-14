@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import './Header.css';
+import minilogobrand from '../assests/minilogobrand.png';
 
 export default function Header({ title }) {
   const [search, setSearch] = useState(false);
@@ -22,12 +24,20 @@ export default function Header({ title }) {
   // }
 
   return (
-    <header>
+    <header className="header">
       <div className="top-header">
         <Link to="/profile">
-          <img src={ profileIcon } alt="profile-icon" data-testid="profile-top-btn" />
+          <img
+            src={ profileIcon }
+            alt="profile-icon"
+            data-testid="profile-top-btn"
+            className="top-itens"
+          />
         </Link>
-        <h2 data-testid="page-title" className="page-title">{ title }</h2>
+        <div className="header-icons">
+          <img src={ minilogobrand } alt="" className="minilogo" />
+          <h2 data-testid="page-title" className="page-title">{ title }</h2>
+        </div>
         { (title === 'Drinks' || title === 'Meals')
         && (
           <button type="button" onClick={ () => setSearch(!search) }>
@@ -35,6 +45,7 @@ export default function Header({ title }) {
               src={ searchIcon }
               alt="search-icon"
               data-testid="search-top-btn"
+              className="top-itens"
             />
           </button>
         ) }

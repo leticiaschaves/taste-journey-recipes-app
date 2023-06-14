@@ -15,9 +15,10 @@ export default function ShareBtn({ id }) {
   }
 
   return (
-    <div>
+    <div className="sharingBtn">
       {showAlert && <p>Link copied!</p>}
       <button
+        className="share-btn"
         type="button"
         data-testid="share-btn"
         onClick={ async () => {

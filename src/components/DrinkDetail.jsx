@@ -6,6 +6,7 @@ import RecommendationCard from './RecommendationCard';
 import StartRecipeBtn from './StartRecipeBtn';
 import ShareBtn from './ShareBtn';
 import FavoriteBtn from './FavoriteBtn';
+import '../pages/RecipeDetails.css';
 
 export default function DrinkDetail({ id }) {
   const dispatch = useDispatch();
@@ -23,16 +24,19 @@ export default function DrinkDetail({ id }) {
   }
 
   return (
-    <div>
+    <div className="details-component">
       <img
         src={ details.strDrinkThumb }
         alt={ details.strDrink }
         data-testid="recipe-photo"
       />
-      <h1 data-testid="recipe-title">{details.strDrink}</h1>
-      <h3 data-testid="recipe-category">{details.strAlcoholic}</h3>
-      <ul>
-        {ingredientsKeys.length > 0
+      <header className="header-details">
+        <h1 data-testid="recipe-title">{details.strDrink}</h1>
+        <h3 data-testid="recipe-category">{details.strAlcoholic}</h3>
+      </header>
+      <div className="ingredients">
+        <ul>
+          {ingredientsKeys.length > 0
           && measuresKeys.length > 0
           && ingredientsKeys.map((key, index) => (details[key] !== null ? (
             <li
@@ -46,16 +50,23 @@ export default function DrinkDetail({ id }) {
               }`}
             </li>
           ) : null))}
-      </ul>
-      <p data-testid="instructions">{details.strInstructions}</p>
+        </ul>
+      </div>
+      <div className="instructions">
+        <p data-testid="instructions">{details.strInstructions}</p>
+      </div>
       <div className="recommendation">
         {recommendations.map((item, index) => (
           <RecommendationCard key={ index } data={ item } index={ index } />
         ))}
       </div>
-      <StartRecipeBtn id={ id } />
-      <ShareBtn id={ id } />
-      <FavoriteBtn data={ details } />
+      <div className="share-and-favorite-btn">
+        <ShareBtn />
+        <FavoriteBtn data={ details } />
+      </div>
+      <div className="start-btn">
+        <StartRecipeBtn id={ id } />
+      </div>
     </div>
   );
 }

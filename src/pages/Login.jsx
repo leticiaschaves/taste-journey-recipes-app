@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { saveEmail } from '../redux/actions';
 import './Login.css';
+import logo from '../assests/Logo com nome.png';
 
 function Login() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -41,17 +42,20 @@ function Login() {
   return (
 
     <div className="page">
+
       <form
         action="submit"
         className="form"
       >
+        <img src={ logo } alt="logo" className="logo-login" />
         <label
           htmlFor="email"
           className="label"
         >
-          E-mail
+          {/* E-mail */}
         </label>
         <input
+          placeholder="E-mail"
           type="email"
           name="email"
           id="email"
@@ -64,9 +68,10 @@ function Login() {
           htmlFor="password"
           className="label"
         >
-          Senha
+          {/* Senha */}
         </label>
         <input
+          placeholder="Senha"
           className="input"
           type="password"
           name="password"

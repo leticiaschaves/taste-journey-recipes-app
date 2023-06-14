@@ -60,6 +60,7 @@ export default function SearchBar() {
         data-testid="search-input"
         onChange={ handleChange }
         value={ search }
+        className="search-input"
       />
       <div className="rabio-opts">
         <input

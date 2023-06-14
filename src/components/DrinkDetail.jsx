@@ -54,7 +54,7 @@ export default function DrinkDetail({ id }) {
         ))}
       </div>
       <StartRecipeBtn id={ id } />
-      <ShareBtn />
+      <ShareBtn id={ id } />
       <FavoriteBtn data={ details } />
     </div>
   );

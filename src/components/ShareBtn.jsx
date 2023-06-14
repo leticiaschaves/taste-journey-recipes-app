@@ -1,9 +1,18 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
+import { useLocation } from 'react-router-dom/';
 import shareIcon from '../images/shareIcon.svg';
 
-export default function ShareBtn() {
+export default function ShareBtn({ id }) {
   const [showAlert, setShowAlert] = useState(false);
+  const { pathname } = useLocation();
+
+  let url = `${window.location.origin}/meals/${id}`;
+
+  if (pathname.includes('drinks')) {
+    url = `${window.location.origin}/drinks/${id}`;
+  }
 
   return (
     <div>
@@ -12,7 +21,7 @@ export default function ShareBtn() {
         type="button"
         data-testid="share-btn"
         onClick={ async () => {
-          await copy(window.location.href);
+          await copy(url);
           setShowAlert(true);
         } }
       >
@@ -21,3 +30,7 @@ export default function ShareBtn() {
     </div>
   );
 }
+
+ShareBtn.propTypes = {
+  id: PropTypes.string.isRequired,
+};

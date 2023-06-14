@@ -3,6 +3,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom/';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipesByCategory } from '../redux/actions';
+import './Categories.css';
 
 export default function Categories({ categories }) {
   const { filteredByCategory } = useSelector((state) => state.recipes);
@@ -30,10 +31,11 @@ export default function Categories({ categories }) {
   };
 
   return (
-    <div>
+    <div className="categories">
       { categories && categories.map(({ strCategory }) => (
         <div key={ strCategory }>
           <button
+            className="category-button"
             type="button"
             data-testid={ `${strCategory}-category-filter` }
             onClick={ () => handleClick(strCategory) }
@@ -43,6 +45,7 @@ export default function Categories({ categories }) {
         </div>))}
       <button
         type="button"
+        className="category-button"
         data-testid="All-category-filter"
         onClick={ handleClear }
       >

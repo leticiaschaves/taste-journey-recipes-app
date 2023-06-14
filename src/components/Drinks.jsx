@@ -31,7 +31,7 @@ export default function Drinks({ data }) {
   }
 
   return (
-    <div>
+    <div className="drinks">
       {drinks.length > 0
         && drinks.map((drink, index) => {
           const limit = 12;

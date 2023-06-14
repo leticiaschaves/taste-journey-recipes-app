@@ -1,12 +1,12 @@
-/* .details {
+.details {
   align-items: center;
+  background-color: #ece7cf;
   display: flex;
   flex-direction: column;
   overflow: scroll;
   -ms-overflow-style: none;
-  scrollbar-width: none;
   padding: 1rem;
-  background-color: #ece7cf;
+  scrollbar-width: none;
 }
 
 .details::-webkit-scrollbar {
@@ -15,16 +15,16 @@
 
 .header-details {
   align-items: center;
+  background-color: #ece7cf;
   display: flex;
   padding: 1rem;
   width: 100%;
-  background-color: #ece7cf;
 }
 
 .details-component {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.5rem;
 }
 
@@ -38,9 +38,9 @@
 
 .header-details h3 {
   background-color: #003049;
-  font-size: small;
   border-radius: 5px;
   color: white;
+  font-size: small;
   padding: 0.1rem 0.35rem;
 }
 
@@ -52,25 +52,24 @@
 }
 
 .ingredients {
-  color: #003049;
-  display: flex;
-  justify-content: center;
-  border: #003049 solid 3px;
   border: solid #f77f00 1px;
   border-radius: 10px;
-  font-weight: 300;
-  padding: 15px;
-  width: 90%;
+  color: #003049;
+  display: flex;
   font-size: 0.8rem;
+  font-weight: 300;
+  justify-content: center;
+  padding: 15px;
   padding-left: 1rem;
+  width: 90%;
 }
 
 .instructions {
   color: #003049;
   font-size: 0.9rem;
   line-height: 1.25rem;
-  width: 90%;
   text-align: justify;
+  width: 90%;
 }
 
 .recommendation {
@@ -84,7 +83,7 @@
 }
 
 .start-btn {
-    border: #003049 solid 2px;
+  border: #003049 solid 2px;
 
 }
 
@@ -99,4 +98,4 @@
   padding: 7px 0;
   position: fixed;
   width: 100%;
-} */
+}

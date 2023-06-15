@@ -13,13 +13,11 @@
   scroll-snap-align: start;
   text-decoration: none;
   width: 100%;
-
 }
 
 .recipe-card p {
   color: #ae2b09;
   font-size: larger;
-
 }
 
 a {

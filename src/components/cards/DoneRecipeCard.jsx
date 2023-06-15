@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import shareIcon from '../../images/shareIcon.svg';
+// import shareIcon from '../../images/shareIcon.svg';
+import ShareBtn from '../buttons/ShareBtn';
 
 export default function DoneRecipeCard({ recipe, index }) {
   const {
+    id,
     name,
     image,
     category,
@@ -34,13 +36,11 @@ export default function DoneRecipeCard({ recipe, index }) {
 
       ))}
 
-      <button>
-        <img
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          alt="share button"
-        />
-      </button>
+      <ShareBtn
+        id={ id }
+        testID={ `${index}-horizontal-share-btn` }
+        donePage
+      />
 
     </div>
   );

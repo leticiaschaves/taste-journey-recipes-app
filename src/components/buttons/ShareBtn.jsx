@@ -4,7 +4,7 @@ import copy from 'clipboard-copy';
 import { useLocation } from 'react-router-dom/';
 import shareIcon from '../../images/shareIcon.svg';
 
-export default function ShareBtn({ id }) {
+export default function ShareBtn({ id, testID = 'share-btn', donePage = false }) {
   const [showAlert, setShowAlert] = useState(false);
   const { pathname } = useLocation();
 
@@ -20,18 +20,20 @@ export default function ShareBtn({ id }) {
       <button
         className="share-btn"
         type="button"
-        data-testid="share-btn"
+        data-testid={ !donePage && testID }
         onClick={ async () => {
           await copy(url);
           setShowAlert(true);
         } }
       >
-        <img src={ shareIcon } alt="shareBtn" />
+        <img data-testid={ donePage && testID } src={ shareIcon } alt="shareBtn" />
       </button>
     </div>
   );
 }
 
 ShareBtn.propTypes = {
+  donePage: PropTypes.bool,
   id: PropTypes.string.isRequired,
+  testID: PropTypes.string,
 };

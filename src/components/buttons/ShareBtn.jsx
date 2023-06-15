@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
 import { useLocation } from 'react-router-dom/';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../../images/shareIcon.svg';
 
 export default function ShareBtn({ id }) {
   const [showAlert, setShowAlert] = useState(false);

@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
-import RecommendationCard from './RecommendationCard';
-import StartRecipeBtn from './StartRecipeBtn';
-import ShareBtn from './ShareBtn';
-import FavoriteBtn from './FavoriteBtn';
+import RecommendationCard from './cards/RecommendationCard';
+import StartRecipeBtn from './buttons/StartRecipeBtn';
+import ShareBtn from './buttons/ShareBtn';
+import FavoriteBtn from './buttons/FavoriteBtn';
 import '../pages/RecipeDetails.css';
 
 export default function DrinkDetail({ id }) {

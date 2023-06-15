@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 // import shareIcon from '../../images/shareIcon.svg';
+import { Link } from 'react-router-dom/';
 import ShareBtn from '../buttons/ShareBtn';
 
 export default function DoneRecipeCard({ recipe, index }) {
@@ -15,10 +16,22 @@ export default function DoneRecipeCard({ recipe, index }) {
     nationality,
     alcoholicOrNot,
   } = recipe;
+
+  const path = type === 'meal' ? `/meals/${id}` : `/drinks/${id}`;
+
   return (
     <div>
-      <h2 data-testid={ `${index}-horizontal-name` }>{name }</h2>
-      <img data-testid={ `${index}-horizontal-image` } src={ image } alt={ name } />
+      <Link to={ path }>
+        <h2 data-testid={ `${index}-horizontal-name` }>{name}</h2>
+      </Link>
+      <Link to={ path }>
+        <img
+          data-testid={ `${index}-horizontal-image` }
+          src={ image }
+          alt={ name }
+          width="200px"
+        />
+      </Link>
       <p
         data-testid={ `${index}-horizontal-top-text` }
       >

@@ -52,9 +52,13 @@ describe('Tests if the Profile page renders all elements correctly', () => {
       expect(history.location.pathname).toBe('/favorite-recipes');
     });
 
+    act(() => {
+
+      history.goBack();
+    });
     // Now it tests if Logout button is working and cleaning up localStorage
+    const logoutBtn = await screen.findByRole('button', { name: /logout/i });
     await waitFor(() => {
-      const logoutBtn = screen.getByRole('button', { name: /logout/i });
       userEvent.click(logoutBtn);
       expect(window.localStorage.getItem('user')).toBeFalsy();
     });

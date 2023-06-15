@@ -3,6 +3,7 @@ import {
   GET_RECIPES,
   GET_DETAILS_AND_RECOMMENDATIONS,
   REDIRECT_TO_DETAILS,
+  REFRESH_FAVORITE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   filteredByCategory: true,
   details: {},
   recommendations: [],
+  refreshFavorite: false,
 };
 
 const recipes = (state = INITIAL_STATE, action) => {
@@ -38,6 +40,11 @@ const recipes = (state = INITIAL_STATE, action) => {
       ...state,
       details: payload.details,
       recommendations: payload.recommendations,
+    };
+  case REFRESH_FAVORITE:
+    return {
+      ...state,
+      refreshFavorite: !state.refreshFavorite,
     };
   default:
     return state;

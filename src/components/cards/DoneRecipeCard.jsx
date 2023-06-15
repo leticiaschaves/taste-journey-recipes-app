@@ -1,13 +1,27 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import shareIcon from '../../images/shareIcon.svg';
 
 export default function DoneRecipeCard({ recipe, index }) {
-  const { name, image, category, doneDate, tags } = recipe;
+  const {
+    name,
+    image,
+    category,
+    doneDate,
+    tags,
+    type,
+    nationality,
+    alcoholicOrNot,
+  } = recipe;
   return (
     <div>
       <h2 data-testid={ `${index}-horizontal-name` }>{name }</h2>
       <img data-testid={ `${index}-horizontal-image` } src={ image } alt={ name } />
-      <p data-testid={ `${index}-horizontal-top-text` }>{ category}</p>
+      <p
+        data-testid={ `${index}-horizontal-top-text` }
+      >
+        {type === 'meal' ? `${nationality} - ${category}` : alcoholicOrNot}
+      </p>
       <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
 
       {tags.length > 0 && tags.map((tag) => (
@@ -20,7 +34,13 @@ export default function DoneRecipeCard({ recipe, index }) {
 
       ))}
 
-      <button data-testid={ `${index}-horizontal-share-btn` }>Share</button>
+      <button>
+        <img
+          data-testid={ `${index}-horizontal-share-btn` }
+          src={ shareIcon }
+          alt="share button"
+        />
+      </button>
 
     </div>
   );

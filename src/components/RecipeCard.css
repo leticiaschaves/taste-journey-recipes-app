@@ -7,11 +7,27 @@
   flex-direction: column;
   margin: 10px;
   width: 9rem;
+  margin: 10px;
+  width: 10rem;
+  flex-shrink: 0;
+  height: 10%;
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 10px;
+  scroll-snap-align: start;
+  text-decoration: none;
+  width: 100%;
+
 }
 
 .recipe-card p {
   color: #ae2b09;
   font-size: larger;
+
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Teste */
@@ -39,9 +55,11 @@ a {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 20px 0;
   text-align: center;
+  justify-content: center;
+
 }
 
 .drinks {

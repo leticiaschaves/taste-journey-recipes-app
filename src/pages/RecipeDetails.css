@@ -54,7 +54,18 @@
 }
 
 .recommendation {
+  display: flex;
+  height: 260px;
+}
+
+.share-and-favorite-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.start-btn {
   background-color: #ece7cf;
+  border: #003049 solid 2px;
   display: flex;
   flex-flow: column wrap;
   font-size: 13px;

@@ -1,90 +1,75 @@
-.details {
+.recipe-card {
   align-items: center;
-  background-color: #ece7cf;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  padding: 1rem;
-  scrollbar-width: none;
-}
-
-.details::-webkit-scrollbar {
-  display: none;
-}
-
-.header-details {
-  align-items: center;
-  background-color: #ece7cf;
-  display: flex;
-  padding: 1rem;
+  flex-shrink: 0;
+  height: 10%;
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 20px;
+  scroll-snap-align: start;
+  text-decoration: none;
   width: 100%;
 }
 
-.details-component {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.recipe-card p {
+  color: #003049;
+  font-size: medium;
+  text-decoration: none;
 }
 
-.header-details h1 {
-  background-color: #f77f00;
+.recipe-img {
   border-radius: 10px;
-  color: #ece7cf;
-  max-width: 280px;
-  padding: 1rem 2rem;
-}
-
-.header-details h3 {
-  background-color: #003049;
-  border-radius: 5px;
-  color: white;
-  font-size: small;
-  padding: 0.1rem 0.35rem;
-}
-
-.details-component img {
-  align-items: center;
-  height: 20rem;
+  height: 90%;
   object-fit: cover;
   width: 100%;
 }
 
-.ingredients {
-  border: solid #f77f00 1px;
-  border-radius: 10px;
-  color: #003049;
-  display: flex;
-  font-size: 0.8rem;
-  font-weight: 300;
-  justify-content: center;
-  padding: 15px;
-  padding-left: 1rem;
-  width: 90%;
+.card-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: -15px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.instructions {
-  color: #003049;
-  font-size: 0.9rem;
-  line-height: 1.25rem;
-  text-align: justify;
-  width: 90%;
+
+.meals {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.drinks {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0;
 }
 
 .recommendation {
+  background-color: #ece7cf;
   display: flex;
-  height: 260px;
+  flex-flow: column wrap;
+  font-size: 13px;
+  gap: 1rem;
+  height: 200px;
+  justify-content: center;
+  margin: 0 1rem;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  width: 100%;
 }
 
-.share-and-favorite-btn {
-  display: flex;
-  flex-direction: row;
-}
-
-.start-btn {
-  border: #003049 solid 2px;
-
+.recipe-card img {
+  border-radius: 5px;
+  width: 130px;
 }
 
 .startRecipe {

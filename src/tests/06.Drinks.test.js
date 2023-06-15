@@ -1,9 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Drinks from '../components/Drinks';
-import { fetchRecipes } from '../redux/actions';
 
 jest.mock('react-router-dom', () => ({
   Redirect: jest.fn(),

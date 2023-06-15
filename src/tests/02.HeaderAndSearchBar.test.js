@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// import { createMemoryHistory } from 'history';
+import { act } from 'react-dom/test-utils';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 import App from '../App';
 import fetch from '../../cypress/mocks/fetch';
@@ -20,15 +20,18 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
     global.alert.mockImplementation(() => { });
     const { history } = renderWithRouterAndRedux(<App />);
     const btn = screen.getByTestId('login-submit-btn');
-    const email = screen.getByRole('textbox', { name: /e-mail/i });
+    const email = screen.getByTestId('email-input');
     const password = screen.getByTestId('password-input');
 
-    userEvent.type(email, 'user@user.com');
-
-    userEvent.type(password, 'strongPassword.com');
+    act(() => {
+      userEvent.type(email, 'user@user.com');
+      userEvent.type(password, 'strongPassword.com');
+    });
 
     await waitFor(() => {
-      userEvent.click(btn);
+      act(() => {
+        userEvent.click(btn);
+      });
       const { pathname } = history.location;
       expect(pathname).toBe('/meals');
     });
@@ -37,8 +40,31 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
 
     expect(search).toBeVisible();
     expect(profile).toBeInTheDocument();
+    act(() => {
+      userEvent.click(search);
+    });
+  });
+  it('Deve filtrar por categoria corretamente', () => {
+    const beef = screen.getByText(/beef/i);
 
-    userEvent.click(search);
+    expect(beef).toBeInTheDocument();
+    act(() => {
+      userEvent.click(beef);
+    });
+
+    waitFor(() => {
+      expect(screen.getByText(/beef and mustard pie/i)).toBeInTheDocument();
+    });
+    const all = screen.getByText(/all/i);
+
+    expect(all).toBeInTheDocument();
+    act(() => {
+      userEvent.click(all);
+    });
+
+    waitFor(() => {
+      expect(screen.getByText(/burek/i)).toBeInTheDocument();
+    });
   });
   it('Deve pesquisar por nome corretamente', () => {
     const name = screen.getByText(/name/i);
@@ -47,10 +73,11 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
 
     expect(input).toBeInTheDocument();
     expect(searchBtn).toBeInTheDocument();
-
-    userEvent.type(input, 'chicken');
-    userEvent.click(name);
-    userEvent.click(searchBtn);
+    act(() => {
+      userEvent.type(input, 'chicken');
+      userEvent.click(name);
+      userEvent.click(searchBtn);
+    });
 
     waitFor(() => {
       expect(screen.getAllByText(/Chicken Handi/i)).toBeInTheDocument();
@@ -63,10 +90,11 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
 
     expect(input).toBeInTheDocument();
     expect(searchBtn).toBeInTheDocument();
-
-    userEvent.type(input, 'chicken');
-    userEvent.click(ingredient);
-    userEvent.click(searchBtn);
+    act(() => {
+      userEvent.type(input, 'chicken');
+      userEvent.click(ingredient);
+      userEvent.click(searchBtn);
+    });
 
     expect(global.fetch).toBeCalledWith(mealsAPI);
 
@@ -81,10 +109,11 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
 
     expect(input).toBeInTheDocument();
     expect(searchBtn).toBeInTheDocument();
-
-    userEvent.type(input, 'c');
-    userEvent.click(firstLetter);
-    userEvent.click(searchBtn);
+    act(() => {
+      userEvent.type(input, 'c');
+      userEvent.click(firstLetter);
+      userEvent.click(searchBtn);
+    });
 
     waitFor(() => {
       expect(screen.getAllByText(/Chocolate Gateau/i)).toBeInTheDocument();
@@ -98,33 +127,20 @@ describe('Testa os componentes Header e SearchBar da aplicação', () => {
     expect(input).toBeInTheDocument();
     expect(searchBtn).toBeInTheDocument();
 
-    userEvent.type(input, 'chocolate');
-    userEvent.click(firstLetter);
-    userEvent.click(searchBtn);
+    act(() => {
+      userEvent.type(input, 'chocolate');
+      userEvent.click(firstLetter);
+      userEvent.click(searchBtn);
+    });
 
     waitFor(() => {
       expect(global.alert).toHaveBeenCalledWith(alertMessage);
     });
   });
 });
-
-// EM CONSTRUÇÃO
 describe('Testa o Header e SearchBar da página drinks', () => {
   it('Deve realizar busca na searchBar e chamar a API', async () => {
     const { history } = renderWithRouterAndRedux(<App />, { route: '/drinks' });
-    // const btn = screen.getByTestId('login-submit-btn');
-    // const email = screen.getByRole('textbox', { name: /e-mail/i });
-    // const password = screen.getByTestId('password-input');
-
-    // userEvent.type(email, 'user@user.com');
-
-    // userEvent.type(password, 'strongPassword.com');
-
-    // await waitFor(() => {
-    //   userEvent.click(btn);
-    //   const { pathname } = history.location;
-    //   expect(pathname).toBe('/drinks');
-    // });
     const search = screen.getByTestId('search-top-btn');
     const profile = screen.getByAltText(/profile-icon/i);
 
@@ -132,7 +148,9 @@ describe('Testa o Header e SearchBar da página drinks', () => {
     expect(profile).toBeInTheDocument();
 
     waitFor(() => {
-      userEvent.click(search);
+      act(() => {
+        userEvent.click(search);
+      });
 
       expect(history.location.pathname).toBe('/drinks');
     });
@@ -140,9 +158,11 @@ describe('Testa o Header e SearchBar da página drinks', () => {
     const searchBtn = screen.getByTestId(searchButton);
     expect(input).toBeInTheDocument();
     expect(searchBtn).toBeInTheDocument();
-    userEvent.type(input, 'c');
-    userEvent.click(firstLetter);
-    userEvent.click(searchBtn);
+    act(() => {
+      userEvent.type(input, 'c');
+      userEvent.click(firstLetter);
+      userEvent.click(searchBtn);
+    });
 
     expect(global.fetch).toBeCalledWith(drinksAPI);
 

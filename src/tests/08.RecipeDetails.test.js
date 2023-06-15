@@ -16,12 +16,10 @@ jest.mock('redux', () => ({
 
 jest.mock('../components/DrinkDetail', () => jest.fn());
 jest.mock('../components/MealDetail', () => jest.fn());
-
-describe('RecipeDetails', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
+afterEach(() => {
+  jest.clearAllMocks();
+});
+describe('Testa o componente RecipeDetails', () => {
   it('Testa se tem o pathname "/drinks"', () => {
     useParams.mockReturnValue({ idDaReceita: '123' });
     useLocation.mockReturnValue({ pathname: '/drinks' });

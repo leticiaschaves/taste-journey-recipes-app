@@ -29,7 +29,7 @@ describe('Testa a página de login', () => {
   it('Deve habilitar o botão quando os inputs estiverem preenchidos e alterar a rota para /meals', async () => {
     const { history } = renderWithRouterAndRedux(<App />);
     const btn = screen.getByTestId('login-submit-btn');
-    const email = screen.getByRole('textbox', { name: /e-mail/i });
+    const email = screen.getByPlaceholderText('E-mail');
     const password = screen.getByTestId('password-input');
 
     expect(btn).toBeDisabled();

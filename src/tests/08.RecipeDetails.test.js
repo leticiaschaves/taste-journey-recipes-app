@@ -10,6 +10,10 @@ jest.mock('react-router-dom', () => ({
   useLocation: jest.fn(),
 }));
 
+jest.mock('redux', () => ({
+  useDispatch: jest.fn(),
+}));
+
 jest.mock('../components/DrinkDetail', () => jest.fn());
 jest.mock('../components/MealDetail', () => jest.fn());
 afterEach(() => {

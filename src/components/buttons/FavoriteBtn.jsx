@@ -29,10 +29,19 @@ export default function FavoriteBtn({ data, testID = 'favorite-btn' }) {
       image: data.strMealThumb || data.strDrinkThumb || data.image,
     };
 
-    localStorage.setItem(
-      'favoriteRecipes',
-      JSON.stringify([...favoriteRecipesLS, recipe]),
-    );
+    if (favoriteRecipesLS.some((recipeLS) => recipeLS.id === id)) {
+      localStorage.setItem(
+        'favoriteRecipes',
+        JSON.stringify(
+          favoriteRecipesLS.filter((favoriteLS) => favoriteLS.id !== id),
+        ),
+      );
+    } else {
+      localStorage.setItem(
+        'favoriteRecipes',
+        JSON.stringify([...favoriteRecipesLS, recipe]),
+      );
+    }
     setFavorite(!favorite);
     dispatch(refreshFavorites());
   };

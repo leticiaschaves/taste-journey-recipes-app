@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import whiteHeart from '../images/whiteHeartIcon.svg';
-import blackHeart from '../images/blackHeartIcon.svg';
+import whiteHeart from '../../images/whiteHeartIcon.svg';
+import blackHeart from '../../images/blackHeartIcon.svg';
 
 export default function FavoriteBtn({ data }) {
   const favoriteRecipesLS = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];

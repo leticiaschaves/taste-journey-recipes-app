@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import FavoriteBtn from '../components/FavoriteBtn';
-import FinishBtn from '../components/FinishBtn';
-import ShareBtn from '../components/ShareBtn';
+import FavoriteBtn from '../components/buttons/FavoriteBtn';
+import FinishBtn from '../components/buttons/FinishBtn';
+import ShareBtn from '../components/buttons/ShareBtn';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
 import IngredientsCheckbox from '../components/IngredientsCheckbox';
 

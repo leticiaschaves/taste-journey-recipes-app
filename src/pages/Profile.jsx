@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export default function Profile() {
   const history = useHistory();
-  const { email } = JSON.parse(localStorage.getItem('user'));
+  const { email } = JSON.parse(localStorage.getItem('user')) || { email: '' };
 
   const handleClick = (path) => {
     history.push(path);

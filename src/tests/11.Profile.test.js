@@ -53,7 +53,6 @@ describe('Tests if the Profile page renders all elements correctly', () => {
     });
 
     act(() => {
-
       history.goBack();
     });
     // Now it tests if Logout button is working and cleaning up localStorage

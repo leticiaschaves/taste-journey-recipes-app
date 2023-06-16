@@ -23,7 +23,12 @@ function Footer() {
             history.push('/meals');
           } }
         >
-          <img data-testid="meals-bottom-btn" className="meals-icon" src={ meal } alt="food" />
+          <img
+            data-testid="meals-bottom-btn"
+            className="meals-icon"
+            src={ meal }
+            alt="food"
+          />
         </button>
         <button
           type="button"

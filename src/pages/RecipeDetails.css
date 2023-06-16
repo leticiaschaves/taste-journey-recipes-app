@@ -9,12 +9,12 @@
 }
 
 .recipe-title {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: #ae2b09;
   text-align: center;
 }
 
 .recipe-categorie {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: #ae2b09;
   margin-top: 2px;
   text-align: center;

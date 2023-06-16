@@ -64,14 +64,17 @@ export default function MealDetail({ id }) {
 
         </p>
         <iframe
-          src={ details.strYoutube }
+          src={ details.strYoutube && details.strYoutube.replace('watch?v=', 'embed/') }
           width="560"
           height="315"
           title={ details.strMeal }
           data-testid="video"
           className="video"
-
         />
+        {/* <video width="640" height="360" controls>
+          <source src={ details.strYoutube } type="tipo_do_video" />
+          Seu navegador não suporta a reprodução de vídeos.
+        </video> */}
       </div>
       <div className="recommendation">
         {recommendations.map((item, index) => (

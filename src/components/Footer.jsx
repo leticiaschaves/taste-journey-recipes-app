@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import meal from '../images/mealIcon.svg';
+import meal from '../images/dinner_dining_FILL0_wght400_GRAD0_opsz48.png';
 import drink from '../images/drinkIcon.svg';
 import { fetchCategories, fetchRecipesByCategory } from '../redux/actions';
 
@@ -23,12 +23,12 @@ function Footer() {
             history.push('/meals');
           } }
         >
-          <img data-testid="meals-bottom-btn" src={ meal } alt="food" />
+          <img data-testid="meals-bottom-btn" className="meals-icon" src={ meal } alt="food" />
         </button>
         <button
           type="button"
           onClick={ () => {
-            const urlDrinksCategories = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+            const urlDrinksCategories = 'https://www.thecocktaildb.com/stapi/json/v1/1/list.php?c=li';
             const urlDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
             dispatch(fetchCategories(urlDrinksCategories));

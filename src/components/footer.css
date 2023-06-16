@@ -13,3 +13,8 @@ footer {
   bottom: 65px;
   position: absolute;
 }
+
+.meals-icon {
+  background-color: transparent;
+  size: 60px;
+}

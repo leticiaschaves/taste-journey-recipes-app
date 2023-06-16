@@ -28,8 +28,8 @@
 
 
 .top-itens {
+  background-color: rgba(0, 0, 0, 0);
   margin: 5px;
-  background-color: transparent;
 }
 
 /* .meals {

@@ -70,6 +70,7 @@ export default function MealDetail({ id }) {
           title={ details.strMeal }
           data-testid="video"
           className="video"
+
         />
       </div>
       <div className="recommendation">

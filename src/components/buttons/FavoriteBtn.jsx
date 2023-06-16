@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
 import blackHeart from '../../images/blackHeartIcon.svg';
+import { refreshFavorites } from '../../redux/actions';
 
-export default function FavoriteBtn({ data }) {
+export default function FavoriteBtn({ data, testID = 'favorite-btn' }) {
+  const dispatch = useDispatch();
   const favoriteRecipesLS = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-  const id = data.idMeal || data.idDrink;
+  const id = data.idMeal || data.idDrink || data.id;
 
   const INITIAL_STATE = favoriteRecipesLS.some((recipe) => recipe.id === id);
 
@@ -17,20 +20,30 @@ export default function FavoriteBtn({ data }) {
 
   const handleClick = () => {
     const recipe = {
-      id: data.idMeal || data.idDrink,
-      type: data.idMeal ? 'meal' : 'drink',
-      nationality: data.strArea || '',
-      category: data.strCategory,
-      alcoholicOrNot: data.strAlcoholic || '',
-      name: data.strMeal || data.strDrink,
-      image: data.strMealThumb || data.strDrinkThumb,
+      id: data.idMeal || data.idDrink || data.id,
+      type: data.idMeal || data.type === 'meal' ? 'meal' : 'drink',
+      nationality: data.strArea || data.nationality || '',
+      category: data.strCategory || data.category,
+      alcoholicOrNot: data.strAlcoholic || data.alcoholicOrNot || '',
+      name: data.strMeal || data.strDrink || data.name,
+      image: data.strMealThumb || data.strDrinkThumb || data.image,
     };
 
-    localStorage.setItem(
-      'favoriteRecipes',
-      JSON.stringify([...favoriteRecipesLS, recipe]),
-    );
+    if (favoriteRecipesLS.some((recipeLS) => recipeLS.id === id)) {
+      localStorage.setItem(
+        'favoriteRecipes',
+        JSON.stringify(
+          favoriteRecipesLS.filter((favoriteLS) => favoriteLS.id !== id),
+        ),
+      );
+    } else {
+      localStorage.setItem(
+        'favoriteRecipes',
+        JSON.stringify([...favoriteRecipesLS, recipe]),
+      );
+    }
     setFavorite(!favorite);
+    dispatch(refreshFavorites());
   };
 
   return (
@@ -43,7 +56,7 @@ export default function FavoriteBtn({ data }) {
         <img
           src={ favorite ? blackHeart : whiteHeart }
           alt="Heart"
-          data-testid="favorite-btn"
+          data-testid={ testID }
         />
       </button>
     </div>

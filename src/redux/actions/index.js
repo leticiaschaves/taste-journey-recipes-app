@@ -4,7 +4,7 @@ export const GET_RECIPES = 'GET_RECIPES';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const REDIRECT_TO_DETAILS = 'REDIRECT_TO_DETAILS';
 export const GET_DETAILS_AND_RECOMMENDATIONS = 'GET_DETAILS_AND_RECOMMENDATIONS';
-
+export const REFRESH_FAVORITE = 'REFRESH_FAVORITE';
 // ACTIONS CREATORS
 export const saveEmail = (payload) => ({
   type: SAVE_EMAIL,
@@ -35,6 +35,10 @@ export const getRecommendations = (payload) => ({
   type: GET_RECOMMENDATIONS,
   payload,
 
+});
+
+export const refreshFavorites = () => ({
+  type: REFRESH_FAVORITE,
 });
 
 export const fetchRecipes = (url) => async (dispatch) => {

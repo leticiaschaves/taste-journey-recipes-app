@@ -3,15 +3,16 @@ import React from 'react';
 // import shareIcon from '../../images/shareIcon.svg';
 import { Link } from 'react-router-dom/';
 import ShareBtn from '../buttons/ShareBtn';
+import FavoriteBtn from '../buttons/FavoriteBtn';
 
-export default function DoneRecipeCard({ recipe, index }) {
+export default function DoneRecipeCard({ recipe, index, favoritePage = false }) {
   const {
     id,
     name,
     image,
     category,
-    doneDate,
-    tags,
+    doneDate = '',
+    tags = [],
     type,
     nationality,
     alcoholicOrNot,
@@ -37,9 +38,11 @@ export default function DoneRecipeCard({ recipe, index }) {
       >
         {type === 'meal' ? `${nationality} - ${category}` : alcoholicOrNot}
       </p>
-      <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
 
-      {tags.length > 0 && tags.map((tag) => (
+      {!favoritePage
+      && <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>}
+
+      {tags.length > 0 && !favoritePage && tags.map((tag) => (
         <p
           key={ tag }
           data-testid={ `${index}-${tag}-horizontal-tag` }
@@ -54,6 +57,10 @@ export default function DoneRecipeCard({ recipe, index }) {
         testID={ `${index}-horizontal-share-btn` }
         donePage
       />
+
+      {favoritePage && (
+        <FavoriteBtn data={ recipe } testID={ `${index}-horizontal-favorite-btn` } />
+      )}
 
     </div>
   );

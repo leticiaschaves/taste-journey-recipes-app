@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { saveEmail } from '../redux/actions';
 import './Login.css';
-import logo from '../assests/Logo com nome.png';
+import logo from '../assests/Logo com Nome.png';
 
 function Login() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);

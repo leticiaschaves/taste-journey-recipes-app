@@ -28,6 +28,7 @@
 
 
 .top-itens {
+  background-color: rgba(255, 255, 255, 0);
   margin: 5px;
 }
 
@@ -79,7 +80,7 @@ input {
 }
 
 button {
-  background-color: #ece7cf;
+  background-color: transparent;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -87,7 +88,7 @@ button {
 }
 
 .search-btn {
-  background-color: #a44a3f;
+  background-color: #a44b3f00;
   border-radius: 10px;
   color: white;
   cursor: pointer;

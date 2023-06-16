@@ -29,13 +29,20 @@ export default function MealDetail({ id }) {
         src={ details.strMealThumb }
         alt={ details.strMeal }
         data-testid="recipe-photo"
+        className="recipe-photo"
       />
       <header className="header-details">
-        <h1 data-testid="recipe-title">{details.strMeal}</h1>
-        <h3 data-testid="recipe-category">{details.strCategory}</h3>
+        <h1 className="recipe-title" data-testid="recipe-title">{details.strMeal}</h1>
+        <h3
+          className="recipe-categorie"
+          data-testid="recipe-categorie"
+        >
+          {details.strCategory}
+
+        </h3>
       </header>
       <div className="ingredients">
-        <ul>
+        <ul className="recipe-itens">
           {ingredientsKeys.length > 0
           && measuresKeys.length > 0
           && ingredientsKeys.map((key, index) => (details[key] !== '' ? (
@@ -48,15 +55,26 @@ export default function MealDetail({ id }) {
           ) : null))}
         </ul>
       </div>
-      <div className="instructions">
-        <p data-testid="instructions">{details.strInstructions}</p>
+      <div>
+        <p
+          data-testid="instructions"
+          className="instructions"
+        >
+          {details.strInstructions}
+
+        </p>
         <iframe
-          src={ details.strYoutube }
+          src={ details.strYoutube && details.strYoutube.replace('watch?v=', 'embed/') }
           width="560"
           height="315"
           title={ details.strMeal }
           data-testid="video"
+          className="video"
         />
+        {/* <video width="640" height="360" controls>
+          <source src={ details.strYoutube } type="tipo_do_video" />
+          Seu navegador não suporta a reprodução de vídeos.
+        </video> */}
       </div>
       <div className="recommendation">
         {recommendations.map((item, index) => (

@@ -3,7 +3,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.432);
   bottom: 0;
   display: flex;
-  height: 7%;
+  height: 10;
   justify-content: space-around;
   position: fixed;
   width: 100%;
@@ -12,4 +12,9 @@ footer {
 .footer-section {
   bottom: 65px;
   position: absolute;
+}
+
+.meals-icon {
+  background-color: rgba(255, 255, 255, 0.432);
+  size: 60px;
 }

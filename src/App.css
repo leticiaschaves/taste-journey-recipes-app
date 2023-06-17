@@ -13,8 +13,8 @@ h1, h2, h3, h4 {
 }
 
 body {
-  scrollbar-width: thin;
   scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
 }
 
 /* Estilizando a barra de rolagem no Chrome, Safari e Edge */
@@ -30,3 +30,4 @@ body::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
+/* 1 adam 12 */

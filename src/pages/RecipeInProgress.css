@@ -30,18 +30,17 @@
 }
 
 .instructions-imporgress {
-  color: black;
-  margin-left: 3px;
-  padding: 3px;
   background-color: #f6f4d2cb;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: black;
   display: flex;
   flex-direction: column;
   list-style-position: inside;
   list-style-type: disc;
   margin: 10px;
-  padding: 10px;
+  margin-left: 3px;
+  padding: 3px;
   text-align: left;
 }
 

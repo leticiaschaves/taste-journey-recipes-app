@@ -70,8 +70,10 @@ a {
 
 .recommendation {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: 10px;
   overflow-x: auto;
+  padding-bottom: 30px;
 }
 
 .recommendation::-webkit-scrollbar {

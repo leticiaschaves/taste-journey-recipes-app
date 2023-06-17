@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import './IngredientsCheckbox.css';
 
 function IngredientsCheckbox({ details, id, setDisabled }) {
   const { pathname } = useLocation();
@@ -65,7 +66,11 @@ function IngredientsCheckbox({ details, id, setDisabled }) {
               onChange={ handleChecked }
               checked={ checkedIngredient.includes(details[ingredient]) }
             />
-            <p>{`${details[measuresKeys[index]]} ${details[ingredient]}`}</p>
+            <p
+              className="ingredient-name"
+            >
+              {`${details[measuresKeys[index]]} ${details[ingredient]}`}
+            </p>
           </label>
         ),
     );
@@ -97,7 +102,7 @@ function IngredientsCheckbox({ details, id, setDisabled }) {
   }, [checkedIngredient]);
 
   return (
-    <div>
+    <div className="ingredients-check">
       <ul>{ingredientsList.length > 0 && ingredientsList}</ul>
     </div>
   );

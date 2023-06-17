@@ -144,3 +144,29 @@ form {
 .radio-input:checked:before {
   background-color: #a44a3f;
 }
+
+.ingredients-check .label-opt {
+  margin-left: -10px;
+}
+
+.ingredients-check .radio-input {
+  appearance: none;
+  outline: none;
+}
+
+.ingredients-check .radio-input:before {
+  background-color: transparent;
+  border: 1px solid #0000003f;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 16px;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+  vertical-align: middle;
+  width: 16px;
+}
+
+.ingredients-check .radio-input:checked:before {
+  background-color: #a44a3f;
+}

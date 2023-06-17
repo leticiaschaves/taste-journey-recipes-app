@@ -7,6 +7,7 @@ import FinishBtn from '../components/buttons/FinishBtn';
 import ShareBtn from '../components/buttons/ShareBtn';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
 import IngredientsCheckbox from '../components/IngredientsCheckbox';
+import './RecipeInProgress.css';
 
 function RecipeInProgress() {
   const { idDaReceita } = useParams();
@@ -32,19 +33,42 @@ function RecipeInProgress() {
         src={ details.strMealThumb || details.strDrinkThumb }
         alt={ details.strMeal || details.strDrink }
         data-testid="recipe-photo"
-        width="200px"
+        className="recipe-photo"
       />
-      <h1 data-testid="recipe-title">{details.strMeal || details.strDrink}</h1>
-      <h2 data-testid="recipe-category">{details.strCategory}</h2>
-      <h3 data-testid="instructions">{details.strInstructions}</h3>
+      <h1
+        data-testid="recipe-title"
+        className="recipe-title"
+      >
+        {details.strMeal || details.strDrink}
+
+      </h1>
+      <h2
+        data-testid="recipe-categor"
+        className="recipecategor"
+      >
+        {details.strCategory}
+
+      </h2>
+      <h3
+        data-testid="instructions-imporgress"
+        className="instructions-imporgress"
+      >
+        {details.strInstructions}
+
+      </h3>
       <IngredientsCheckbox
         id={ idDaReceita }
         details={ details }
         setDisabled={ setDisabled }
+
       />
-      <FavoriteBtn data={ details } />
-      <ShareBtn id={ idDaReceita } />
-      <FinishBtn disabled={ disabled } data={ details } />
+      <div className="share-and-favorite-btn">
+        <FavoriteBtn data={ details } />
+        <ShareBtn id={ idDaReceita } />
+      </div>
+      <div className="finish-btn">
+        <FinishBtn data={ details } />
+      </div>
     </div>
   );
 }

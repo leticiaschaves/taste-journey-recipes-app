@@ -17,9 +17,9 @@ h2 {
 }
 
 .filter-btn {
-  font-size: large;
   background-color: #ae2b09;
-  color: white;
-  width: 70px;
   border-radius: 5px;
+  color: white;
+  font-size: large;
+  width: 70px;
 }

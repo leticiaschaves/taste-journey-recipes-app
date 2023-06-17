@@ -78,11 +78,11 @@ export default function MealDetail({ id }) {
           className="video"
         />
       </div>
-      {/* <div className="recommendation">
+      <div className="recommendation">
         {recommendations.map((item, index) => (
           <RecommendationCard key={ index } data={ item } index={ index } />
         ))}
-      </div> */}
+      </div>
       <div className="start-btn">
         <StartRecipeBtn id={ id } start-btn />
       </div>

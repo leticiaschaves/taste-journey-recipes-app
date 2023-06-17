@@ -57,6 +57,9 @@
 
 .startRecipe {
   background-color: #ae2b09;
+  margin-left: 5%;
+  margin-right: 50%;
+  width: 90%;
 }
 
 .Finish-btn {

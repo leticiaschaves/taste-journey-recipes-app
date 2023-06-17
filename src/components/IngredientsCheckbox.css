@@ -18,13 +18,6 @@
   margin-bottom: 8px;
 }
 
-.ingredients-check input[ type = 'checkbox' ] {
-  margin-right: 8px;
-}
-
-.ingredients-check .checkedIngredient {
-  font-weight: 700;
-}
 
 .ingredients-check p {
   margin: 0;

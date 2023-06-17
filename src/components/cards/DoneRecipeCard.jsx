@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom/';
 import ShareBtn from '../buttons/ShareBtn';
 import FavoriteBtn from '../buttons/FavoriteBtn';
+import './DoneRecipeCard.css';
 
 export default function DoneRecipeCard({ recipe, index, favoritePage = false }) {
   const {
@@ -21,7 +22,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
   const path = type === 'meal' ? `/meals/${id}` : `/drinks/${id}`;
 
   return (
-    <div>
+    <div className="done-recipe-card">
       <Link to={ path }>
         <h2 data-testid={ `${index}-horizontal-name` }>{name}</h2>
       </Link>
@@ -30,7 +31,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
           data-testid={ `${index}-horizontal-image` }
           src={ image }
           alt={ name }
-          width="200px"
+          className="done-recipe-img"
         />
       </Link>
       <p

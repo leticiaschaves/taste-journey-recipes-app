@@ -67,7 +67,7 @@ function RecipeInProgress() {
         <ShareBtn id={ idDaReceita } />
       </div>
       <div className="finish-btn">
-        <FinishBtn data={ details } />
+        <FinishBtn data={ details } disabled={ disabled } />
       </div>
     </div>
   );

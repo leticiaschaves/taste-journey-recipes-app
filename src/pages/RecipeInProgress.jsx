@@ -8,6 +8,7 @@ import ShareBtn from '../components/buttons/ShareBtn';
 import { fetchDetailsAndRecommendations } from '../redux/actions';
 import IngredientsCheckbox from '../components/IngredientsCheckbox';
 import './RecipeInProgress.css';
+import BackButton from '../components/buttons/BackBtn';
 
 function RecipeInProgress() {
   const { idDaReceita } = useParams();
@@ -28,7 +29,9 @@ function RecipeInProgress() {
   const [disabled, setDisabled] = useState(false);
 
   return (
+
     <div>
+      <BackButton />
       <img
         src={ details.strMealThumb || details.strDrinkThumb }
         alt={ details.strMeal || details.strDrink }

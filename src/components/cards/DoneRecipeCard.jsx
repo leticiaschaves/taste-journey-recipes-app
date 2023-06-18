@@ -40,9 +40,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
         {type === 'meal' ? `${nationality} - ${category}` : alcoholicOrNot}
       </p>
 
-      {!favoritePage
-      && <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>}
-
+      <br />
       {tags.length > 0 && !favoritePage && tags.map((tag) => (
         <p
           key={ tag }
@@ -50,9 +48,10 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
         >
           {tag}
         </p>
-
       ))}
-
+      <br />
+      {!favoritePage
+      && <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>}
       <ShareBtn
         id={ id }
         testID={ `${index}-horizontal-share-btn` }

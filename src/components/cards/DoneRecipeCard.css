@@ -21,3 +21,11 @@
   text-align: center;
   width: 45%;
 }
+
+.done-recipe-img{
+  border-radius: 10px;
+  height: 90%;
+  text-align: center;
+  width: 90%;
+  box-shadow: ;
+}

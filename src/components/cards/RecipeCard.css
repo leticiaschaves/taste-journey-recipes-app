@@ -15,6 +15,7 @@
 .recipe-card p {
   color: #ae2b09;
   font-size: larger;
+  margin-top: 1px;
 }
 
 a {

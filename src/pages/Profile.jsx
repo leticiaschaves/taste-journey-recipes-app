@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import './Profile.css';
 
 export default function Profile() {
   const history = useHistory();
@@ -15,39 +16,42 @@ export default function Profile() {
     <div>
       <Header title="Profile" />
 
-      <h1 data-testid="profile-email">{email}</h1>
-
-      <button
-        data-testid="profile-done-btn"
-        type="button"
-        onClick={ () => handleClick('/done-recipes') }
-      >
-        {' '}
-        Done Recipes
-        {' '}
-      </button>
-      <button
-        data-testid="profile-favorite-btn"
-        type="button"
-        onClick={ () => handleClick('/favorite-recipes') }
-      >
-        {' '}
-        Favorite Recipes
-        {' '}
-      </button>
-      <button
-        data-testid="profile-logout-btn"
-        type="button"
-        onClick={ () => {
-          localStorage.clear();
-          handleClick('/');
-        } }
-      >
-        {' '}
-        Logout
-        {' '}
-      </button>
-
+      <h1 data-testid="profile-email" className="email">{email}</h1>
+      <div className="buttons">
+        <button
+          data-testid="profile-done-btn"
+          type="button"
+          className="profile-favorite-btn"
+          onClick={ () => handleClick('/done-recipes') }
+        >
+          {' '}
+          Done Recipes
+          {' '}
+        </button>
+        <button
+          className="profile-favorite-btn"
+          data-testid="profile-favorite-btn"
+          type="button"
+          onClick={ () => handleClick('/favorite-recipes') }
+        >
+          {' '}
+          Favorite Recipes
+          {' '}
+        </button>
+        <button
+          className="profile-favorite-btn"
+          data-testid="profile-logout-btn"
+          type="button"
+          onClick={ () => {
+            localStorage.clear();
+            handleClick('/');
+          } }
+        >
+          {' '}
+          Logout
+          {' '}
+        </button>
+      </div>
       <Footer />
     </div>
   );

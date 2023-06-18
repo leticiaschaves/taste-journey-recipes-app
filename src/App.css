@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap') ;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
 
 * {
   box-sizing: border-box;
@@ -30,13 +30,10 @@ body::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
+@media screen and ( min-width : 1200px ) {
 
-@media screen and ( min-width : 768px ) {
-
-  .pc-body {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  body {
+    margin: 0 auto;
+    width: 40%;
   }
 }

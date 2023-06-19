@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom/';
 import ShareBtn from '../buttons/ShareBtn';
 import FavoriteBtn from '../buttons/FavoriteBtn';
+import './DoneRecipeCard.css';
 
 export default function DoneRecipeCard({ recipe, index, favoritePage = false }) {
   const {
@@ -21,7 +22,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
   const path = type === 'meal' ? `/meals/${id}` : `/drinks/${id}`;
 
   return (
-    <div>
+    <div className="done-recipe-card">
       <Link to={ path }>
         <h2 data-testid={ `${index}-horizontal-name` }>{name}</h2>
       </Link>
@@ -30,7 +31,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
           data-testid={ `${index}-horizontal-image` }
           src={ image }
           alt={ name }
-          width="200px"
+          className="done-recipe-img"
         />
       </Link>
       <p
@@ -39,9 +40,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
         {type === 'meal' ? `${nationality} - ${category}` : alcoholicOrNot}
       </p>
 
-      {!favoritePage
-      && <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>}
-
+      <br />
       {tags.length > 0 && !favoritePage && tags.map((tag) => (
         <p
           key={ tag }
@@ -49,9 +48,10 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
         >
           {tag}
         </p>
-
       ))}
-
+      <br />
+      {!favoritePage
+      && <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>}
       <ShareBtn
         id={ id }
         testID={ `${index}-horizontal-share-btn` }

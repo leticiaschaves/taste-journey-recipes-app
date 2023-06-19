@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import './FinishBtn.css';
 
 function FinishBtn({ disabled, data }) {
   const doneRecipesLS = JSON.parse(localStorage.getItem('doneRecipes')) || [];
@@ -33,6 +34,7 @@ function FinishBtn({ disabled, data }) {
       type="button"
       onClick={ handleClick }
       data-testid="finish-recipe-btn"
+      className="finish-recipe-btn"
     >
       Finish Recipe
     </button>

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom/';
+import '../../pages/RecipeDetails.css';
 
 export default function StartRecipeBtn({ id }) {
   const { pathname } = useLocation();
@@ -35,7 +36,7 @@ export default function StartRecipeBtn({ id }) {
   };
 
   return (
-    <div>
+    <div className="btn-init">
       {!doneVerification && (
         <button
           type="button"

@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom/';
 import DrinkDetail from '../components/DrinkDetail';
 import MealDetail from '../components/MealDetail';
 import './RecipeDetails.css';
+import BackButton from '../components/buttons/BackBtn';
 
 export default function RecipeDetails() {
   const { idDaReceita } = useParams();
@@ -10,6 +11,7 @@ export default function RecipeDetails() {
 
   return (
     <main className="details">
+      <BackButton />
       {pathname.includes('/drinks') ? (
         <DrinkDetail id={ idDaReceita } />
       ) : (

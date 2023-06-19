@@ -36,19 +36,21 @@ export default function Header({ title }) {
         </Link>
         <div className="header-icons">
           <img src={ minilogobrand } alt="" className="minilogo" />
-          <h2 data-testid="page-title" className="page-title">{ title }</h2>
+          <h2 data-testid="page-title" className="page-title">{title}</h2>
         </div>
         { (title === 'Drinks' || title === 'Meals')
-        && (
-          <button type="button" onClick={ () => setSearch(!search) }>
-            <img
-              src={ searchIcon }
-              alt="search-icon"
-              data-testid="search-top-btn"
-              className="top-itens"
-            />
-          </button>
-        ) }
+          ? (
+            <button type="button" onClick={ () => setSearch(!search) }>
+              <img
+                src={ searchIcon }
+                alt="search-icon"
+                data-testid="search-top-btn"
+                className="top-itens"
+              />
+            </button>
+          ) : (
+            <div />
+          ) }
       </div>
       <div>
         { search && <SearchBar /> }

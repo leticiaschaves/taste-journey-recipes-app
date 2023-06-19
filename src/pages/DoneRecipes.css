@@ -1,13 +1,15 @@
 .done {
-  color: black;
+  color: #003049;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
-h2 {
+p {
   color: #a44a3f;
   text-decoration: none;
+  text-align: center;
+  font-size: smaller;
 }
 
 .finish-filters {

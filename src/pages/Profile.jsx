@@ -54,8 +54,8 @@ export default function Profile() {
             {' '}
           </button>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

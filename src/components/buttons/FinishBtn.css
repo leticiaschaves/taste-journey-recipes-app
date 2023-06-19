@@ -10,10 +10,15 @@
   margin-top: -15px;
   padding: 7px 0;
   padding-bottom: 5px;
-  width: 50%;
+  width: 100%;
 }
 
 .finish-recipe-btn:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.finish-recipe-btn:hover {
+  background-color: #003049;
+  color: #ece7cf;
 }

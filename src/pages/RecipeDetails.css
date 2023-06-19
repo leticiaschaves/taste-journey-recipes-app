@@ -18,17 +18,18 @@
 .recipe-title {
   color: #ae2b09;
   text-align: center;
+  padding: 1rem;
 }
 
 .recipe-categorie {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: #ae2b09;
+  color: #003049;
   margin-top: 2px;
   text-align: center;
 }
 
 .ingredients {
-  background-color: #f6f4d2cb;
+  background-color: #ece7cf;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -36,8 +37,9 @@
   list-style-position: inside;
   list-style-type: disc;
   margin: 10px;
-  padding: 10px;
+  padding: 2rem 6rem;
   text-align: left;
+  color: #003049;
 }
 
 .instructions {
@@ -49,7 +51,9 @@
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 2rem;
+  color: #003049;
+  text-align: justify;
 }
 
 .video {
@@ -67,7 +71,7 @@
   margin-bottom: 10px;
   margin-top: -15px;
   padding: 7px 0;
-  width: 40%;
+  width: 100%;
 }
 
 

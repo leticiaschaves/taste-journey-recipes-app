@@ -6,7 +6,6 @@
   height: 100vh;
   justify-content: center;
   position: relative;
-
 }
 
 
@@ -43,6 +42,15 @@
   border-radius: 5px;
   padding: 7px 10px;
   width: 100%;
+  text-align: left;
+  color: #003049;
+}
+
+.input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: #003049;
+  text-align: left;
 }
 
 .btn {
@@ -56,6 +64,11 @@
 
 .btn:disabled {
   opacity: 50%;
+}
+
+.btn:hover {
+  background-color: #003049;
+  color: #cbdfbd;
 }
 
 .logo-login {

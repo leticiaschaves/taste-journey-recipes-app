@@ -68,6 +68,12 @@ input {
   text-align: center;
 }
 
+input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: #003049;
+}
+
 .search-input {
   background-color: #ece7cf;
   border: #003049 solid 2px;
@@ -99,7 +105,13 @@ button {
   margin-top: -15px;
   padding: 7px 0;
   padding-bottom: 5px;
-  width: 50%;
+  width: 100%;
+  letter-spacing: 2px;
+}
+
+.search-btn:hover {
+  background-color: #003049;
+  color: #ece7cf;
 }
 
 form {

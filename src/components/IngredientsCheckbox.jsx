@@ -68,6 +68,9 @@ function IngredientsCheckbox({ details, id, setDisabled }) {
             />
             <p
               className="ingredient-name"
+              style={ checkedIngredient.includes(details[ingredient])
+                ? { textDecoration: 'line-through' }
+                : {} }
             >
               {`${details[measuresKeys[index]]} ${details[ingredient]}`}
             </p>

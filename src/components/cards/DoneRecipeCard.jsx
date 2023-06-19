@@ -24,7 +24,7 @@ export default function DoneRecipeCard({ recipe, index, favoritePage = false }) 
   return (
     <div className="done-recipe-card">
       <Link to={ path }>
-        <h2 data-testid={ `${index}-horizontal-name` }>{name}</h2>
+        <p data-testid={ `${index}-horizontal-name` }>{name}</p>
       </Link>
       <Link to={ path }>
         <img

@@ -84,7 +84,7 @@ export default function MealDetail({ id }) {
         ))}
       </div>
       <div className="start-btn">
-        <StartRecipeBtn id={ id } start-btn />
+        <StartRecipeBtn id={ id } start-btn className="start-btn" />
       </div>
     </div>
   );

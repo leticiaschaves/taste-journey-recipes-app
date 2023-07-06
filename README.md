@@ -22,7 +22,7 @@ To get started with the recipes app, follow the steps below:
 *1. Clone the repository to your local machine:*
 
 ```shell
-git clone <repository-url>
+git clone git@github.com:leticiaschaves/taste-journey-recipes-app.git
 ```
 
 *2. Install the dependencies by navigating to the project directory and running the following command:*
